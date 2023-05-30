@@ -88,12 +88,12 @@ This idea has been inspired by personal experiences where organising consistentl
 
 ## ERD
 
-<image src="/Users/jackcoots/sei/projects/club-night/Pictures/ERD.png" alt="Entity Relationship Diagram"></image>
+<image src="Pictures/ERD.png" alt="Entity Relationship Diagram"></image>
 
 ## Wireframes
 
 These wireframes are high level and indicative of the general user journey. The final design will likely be slightly different.
 
-<image src="/Users/jackcoots/sei/projects/club-night/Pictures/Wireframes1.png" alt="Wireframes Picture 1"></image>
+<image src="Pictures/Wireframes1.png" alt="Wireframes Picture 1"></image>
 
-<image src="/Users/jackcoots/sei/projects/club-night/Pictures/Wireframes2.png" alt="Wireframes Picture 2"></image>
+<image src="Pictures/Wireframes2.png" alt="Wireframes Picture 2"></image>
