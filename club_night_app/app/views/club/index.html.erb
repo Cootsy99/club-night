@@ -1,0 +1,33 @@
+<h1>All Clubs</h1>
+
+
+<%= link_to "Create New Club", new_club_path %>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Founder</th>
+        <th>Location</th>
+        <th>Timetable</th>
+    </tr>
+
+    <% @clubs.each do |club| %>
+        <tr>
+        <td><%= link_to(club.name, club_path(club)) %></td>
+        <td><%= club.founder%></td>
+        <td><%= club.location %></td>
+        <td><%= club.timetable %></td>
+        <td>
+            <%= link_to "Edit Club", edit_club_path(artist) %>
+            &nbsp;|&nbsp;
+            <%= link_to "Delete Club", club_path(artist),
+                data: {
+                    turbo_method: :delete, 
+                    turbo_confirm: "Are you sure you want to delete #{artist.name}?"} %>
+        </td>
+            
+        
+
+        </tr>
+    <% end %>
+</table>
