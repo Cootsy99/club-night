@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-    def home
+
+  def home
         @home  ="Club Night"
       end
 end
