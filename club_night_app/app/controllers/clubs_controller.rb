@@ -1,5 +1,5 @@
 class ClubsController < ApplicationController
-   before_action :set_club, only: [:show, :edit, :update, :destroy]
+   before_action :set_club, only: %i[show edit update destroy]
     
     def index
         @clubs = Club.all
