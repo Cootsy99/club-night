@@ -1,17 +1,23 @@
-<div id="<%= dom_id appointment %>">
+<div id="<%= dom_id membership %>">
   <p>
-    <strong>Reason:</strong>
-    <%= appointment.reason %>
+    <strong>Club:</strong>
+    <%= membership.club.name %>
   </p>
 
   <p>
-    <strong>Doctor:</strong>
-    <%= appointment.doctor.name %>
+    <strong>User:</strong>
+    <%= membership.user.name %>
   </p>
 
   <p>
-    <strong>Patient:</strong>
-    <%= appointment.patient.name %>
+    <strong>Admin:</strong>
+    <%= membership.admin %>
   </p>
 
+  <p>
+    <strong>Level:</strong>
+    <%= membership.level %>
+  </p>
+
+  
 </div>

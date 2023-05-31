@@ -25,22 +25,22 @@
 
    <div>
     <%= form.label :admin, style: "display: block" %>
-    <%= form.select :admin, {true, false} %>
+    <%= form.select :admin, [true, false] %>
   </div>
 
    <div>
     <%= form.label :level, style: "display: block" %>
-    <%= form.select :level, {"Beginner", "Intermediate", "Expert"} %>
+    <%= form.select :level, ["Beginner", "Intermediate", "Expert"] %>
   </div>
 
   <div>
     <%= form.label :membership_type, style: "display: block" %>
-    <%= form.select :membership_type, {"PAYG", "Monthly", "Annual"} %>
+    <%= form.select :membership_type, ["PAYG", "Monthly", "Annual"] %>
   </div>
 
    <div>
     <%= form.label :membership_expiry, style: "display: block" %>
-    <%= form.date :membership_expiry %>
+    <%= form.date_field :membership_expiry %>
   </div>
 
   <div>

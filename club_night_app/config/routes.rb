@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :clubs
   resources :users
+  resources :memberships
+
   root "application#home"
   
   get "home", to: "application#home"
