@@ -1,0 +1,13 @@
+<h1> My Profile </h1>
+<br>
+<h2><%= @user.name  %></h2>
+
+<%= link_to("Edit", edit_user_path(@user)) %>
+
+
+
+<br>
+<%= @user.email %>
+<br>
+<%= @user.about %>
+<br>
