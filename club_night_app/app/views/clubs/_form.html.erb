@@ -1,0 +1,23 @@
+<%= form_for @club do |f| %>
+    <div class="field">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+        <%= f.label :founder, "Founder" %>
+        <%= f.text_field :founder %>
+    </div>
+
+    <div class="field">
+        <%= f.label :location, "Location" %>
+        <%= f.text_field :location %>
+    </div>
+
+    <div class="field">
+        <%= f.label :timetable, "Timetable" %>
+        <%= f.text_field :timetable %>
+    </div>
+
+    <%= f.submit "Submit", :class => "button" %>
+<% end %>
