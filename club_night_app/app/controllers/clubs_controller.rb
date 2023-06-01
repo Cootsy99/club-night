@@ -4,6 +4,10 @@ class ClubsController < ApplicationController
     
     def index
         @clubs = Club.all
+        def search
+        @query = params[:query]
+        @results = Club.where("name LIKE ?", "%#{@query}%")
+      end
     end
 
     def show
@@ -30,6 +34,9 @@ class ClubsController < ApplicationController
         @club.destroy
         redirect_to clubs_path
     end
+
+    
+      
 
 
 

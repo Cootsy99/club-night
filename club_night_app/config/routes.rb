@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   devise_for :users, :path => 'u'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,5 +12,5 @@ Rails.application.routes.draw do
   root "application#home"
   
   get "home", to: "application#home"
-  get "find_new_club", to: "application#find_new_club"
+  # get "find_new_club", to: "application#find_new_club"
 end
