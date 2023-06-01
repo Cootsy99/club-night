@@ -12,7 +12,7 @@
     <p style="list-style-type: none"><%="Founder:  #{m.club.founder}" %></p>
     <p style="list-style-type: none"><%="Location:  #{m.club.location}" %></p>
     <p style="list-style-type: none"><%="Timtable:  #{m.club.timetable}" %></p>
-    <p style="list-style-type: none"><%="Members:  #{m.club.users.count}" %></p>
+    <p style="list-style-type: none"><%= link_to "Members:  #{m.club.users.count}", members_path(club_id: m.club.id, club_name: m.club.name) %></p>
 
 
 </div>

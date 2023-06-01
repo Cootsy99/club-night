@@ -36,9 +36,12 @@
       <div class="card text-white bg-dark">
         <div class="card-body text-center">
           <h5 class="card-title">Members</h5>
-          <p class="card-text"><%= pluralize(@club.users.count, "Member") %></p>
+          <p class="card-text"><%= link_to pluralize(@club.users.count, "Member"), members_path(club_id: @club.id, club_name: @club.name) %></p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
