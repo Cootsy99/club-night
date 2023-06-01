@@ -15,7 +15,7 @@
 
   <div>
     <%= form.label :club_id, style: "display: block" %>
-    <%= form.select :club_id, Club.all.collect {|c| [c.name, c.id]} %>
+    <%= form.select :club_id, Club.all.collect {|c| [c.name, c.id]}, selected: [params[:club_name], params[:club_id]] %>
   </div>
 
   <div>

@@ -1,6 +1,8 @@
 <div class="container">
   <h1><%= @club.name %></h1>
   <%= link_to("All Clubs", find_new_club_path, class: "btn btn-primary mt-3") %>
+  <%= link_to("Join #{@club.name}", new_membership_path(club_id: @club.id, club_name: @club.name), class: "btn btn-primary mt-3") %>
+
 
   <div class="row mt-4">
     <div class="col-md-6">
