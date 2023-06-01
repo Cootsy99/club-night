@@ -19,13 +19,11 @@
   </div>
 
   <div>
-    <%= form.label :user_id_id, style: "display: block" %>
-    <%= form.select :user_id, User.all.collect {|u| [u.name, u.id]} %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
    <div>
-    <%= form.label :admin, style: "display: block" %>
-    <%= form.select :admin, [true, false] %>
+    <%= form.hidden_field :admin, value: true %>
   </div>
 
    <div>
