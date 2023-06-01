@@ -1,11 +1,42 @@
-<h1><%= @club.name  %></h1>
-<%= link_to("All Clubs", find_new_club_path) %>
-<%# <%= link_to("Add New ", new_artist_song_path(@artist)) %> 
+<div class="container">
+  <h1><%= @club.name %></h1>
+  <%= link_to("All Clubs", find_new_club_path, class: "btn btn-primary mt-3") %>
 
-<br>
-<%= @club.founder  %>
-<br>
-<%= @club.location  %>
-<br>
-<%= @club.timetable  %>
-<br>
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card text-white bg-dark">
+        <div class="card-body text-center">
+          <h5 class="card-title">Founder</h5>
+          <p class="card-text"><%= @club.founder %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-white bg-dark">
+        <div class="card-body text-center">
+          <h5 class="card-title">Location</h5>
+          <p class="card-text"><%= @club.location %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card text-white bg-dark">
+        <div class="card-body text-center">
+          <h5 class="card-title">Timetable</h5>
+          <p class="card-text"><%= @club.timetable %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-white bg-dark">
+        <div class="card-body text-center">
+          <h5 class="card-title">Members</h5>
+          <p class="card-text"><%= pluralize(@club.users.count, "Member") %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

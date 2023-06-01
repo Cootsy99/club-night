@@ -1,4 +1,4 @@
-<h1>Welcome to <%= @home %></h1>
+<h1>Welcome to Club Night <%= @name %></h1>
 
 <h2> My Clubs </h2>
 <%= link_to "Find new club", find_new_club_path %>
@@ -12,10 +12,7 @@
     <p style="list-style-type: none"><%="Founder:  #{m.club.founder}" %></p>
     <p style="list-style-type: none"><%="Location:  #{m.club.location}" %></p>
     <p style="list-style-type: none"><%="Timtable:  #{m.club.timetable}" %></p>
-    <%= link_to "Edit", edit_membership_path(m) %> |
-    <%= link_to "Delete", membership_path(m), data: {
-                    turbo_method: :delete, 
-                    turbo_confirm: "Are you sure you want to delete?"} %>
+    <p style="list-style-type: none"><%="Members:  #{m.club.users.count}" %></p>
 
 
 </div>

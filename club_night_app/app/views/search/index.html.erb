@@ -16,6 +16,8 @@
         <th><%=sort_link(@query, :founder, "Founder", default_order: :asc) %></th>
         <th><%=sort_link(@query, :location, "Location") %></th>
         <th><%=sort_link(@query, :timetable, "Timetable") %></th>
+        <th><%=sort_link(@query, :members, "Members", default_order: :asc) %></th>
+
     </tr>
     </thead>
 
@@ -27,6 +29,8 @@
             <td> <%= club.founder%>  </td>
             <td> <%= club.location%>  </td>
             <td> <%= club.timetable%>  </td>
+            <td> <%= club.users.count%>  </td>
+
 
 
 
