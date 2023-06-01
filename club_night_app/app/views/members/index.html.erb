@@ -1,2 +1,18 @@
-<h1>Members#index</h1>
-<p>Find me in app/views/members/index.html.erb</p>
+<h1> <%= @club_name %> Members List: </h1>
+
+<h3> There are <%=@members.count %> members </h3>
+
+<div class="container">
+  <div class="row">
+    <% @members.each do |m| %>
+      <%# <div class="col-md-4"> %>
+        <div class="card text-center text-white bg-dark" style="margin: 10px">
+          <div class="card-body">
+            <h5 class="card-title"><%= m.name %></h5>
+            <p class="card-text"><%= m.about %></p>
+          <%# </div> %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
