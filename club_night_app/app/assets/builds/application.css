@@ -19694,3 +19694,18 @@ textarea.form-control-lg {
 .bi-wikipedia::before {
   content: "\f8cc";
 }
+
+.navbar-logo {
+  height: 7vh; /* Adjust the height as needed */
+  margin-right: 10px; /* Optional margin for spacing */
+}
+
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  border: 0;
+  padding: 0 20px;
+}

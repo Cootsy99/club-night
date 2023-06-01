@@ -36,6 +36,7 @@ class ClubsController < ApplicationController
     end
 
     
+    
       
 
 

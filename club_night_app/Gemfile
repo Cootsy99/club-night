@@ -53,7 +53,9 @@ gem "bootsnap", require: false
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'bootstrap-sass'
+gem 'bootstrap'
 gem 'jquery-rails'
+gem 'ransack'
 
 
 group :development, :test do
