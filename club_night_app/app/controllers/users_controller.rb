@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     # end
 
     def show
+        @memberships = Membership.where(user_id:  @user.id)
     end
     
     # def new

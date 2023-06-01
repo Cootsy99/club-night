@@ -21,7 +21,7 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to membership_url(@membership), notice: "Membership was successfully created." }
+        format.html { redirect_to user_path(current_user), notice: "Membership was successfully created." }
         # format.json { render :show, status: :created, location: @appointment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -33,7 +33,7 @@ class MembershipsController < ApplicationController
   def update
     respond_to do |format|
       if @membership.update(membership_params)
-        format.html { redirect_to membership_url(@membership), notice: "Membership was successfully updated." }
+        format.html { redirect_to user_path(current_user), notice: "Membership was successfully updated." }
         # format.json { render :show, status: :ok, location: @appointment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -46,7 +46,7 @@ class MembershipsController < ApplicationController
     @membership.destroy
 
     respond_to do |format|
-      format.html { redirect_to memberships_url, notice: "Membership was successfully destroyed." }
+      format.html { redirect_to user_path(current_user), notice: "Membership was successfully destroyed." }
     #   format.json { head :no_content }
     end
   end

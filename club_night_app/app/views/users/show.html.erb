@@ -2,7 +2,12 @@
 <br>
 <h2><%= @user.name  %></h2>
 
-<%= link_to("Edit", edit_user_path(@user)) %>
+<%= link_to("Edit Profile", edit_user_path(@user)) %>
+<%= link_to "Delete My Profile", user_path(@user),
+                data: {
+                    turbo_method: :delete, 
+                    turbo_confirm: "Are you sure you want to delete?"} %>
+
 
 
 
@@ -12,17 +17,25 @@
 <%= @user.about %>
 <br>
 <br>
-<h2>My Clubs</h2>
-<% @user.clubs.each do |c| %>
-<div class="card text-white bg-dark mb-3" style="max-width: 24rem;">
-<div class="card-header" style="font-weight: bold"><%= c.name %></div>
+<h2>My Memberships</h2>
+
+<%= link_to "New membership", new_membership_path %>
+
+<% @memberships.each do |m| %>
+<div class="card text-white bg-dark mb-3 border border-success" style="max-width: 24rem; border-width: 3px">
+<div class="card-header" style="font-weight: bold"><%= link_to m.club.name, club_path(m.club) %></div>
   <div class="card-body">   
 
-    <p style="list-style-type: none"><%="Founder:  #{c.founder}" %></p>
-    <p style="list-style-type: none"><%="Location:  #{c.location}" %></p>
-    <p style="list-style-type: none"><%="Timtable:  #{c.timetable}" %></p>
+    <p style="list-style-type: none"><%="Founder:  #{m.club.founder}" %></p>
+    <p style="list-style-type: none"><%="Location:  #{m.club.location}" %></p>
+    <p style="list-style-type: none"><%="Timtable:  #{m.club.timetable}" %></p>
+    <%= link_to "Edit", edit_membership_path(m) %> |
+    <%= link_to "Delete", membership_path(m), data: {
+                    turbo_method: :delete, 
+                    turbo_confirm: "Are you sure you want to delete?"} %>
+
+
 </div>
 </div>
 <% end %>
-
 
