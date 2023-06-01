@@ -11,12 +11,18 @@
 <br>
 <%= @user.about %>
 <br>
+<br>
 <h2>My Clubs</h2>
-<%= @user.clubs.each do |c| %>
-<ul>
-    <li><%= c.name %></li>
-    <li><%= c.founder %></li>
-    <li><%= c.location %></li>
-    <li><%= c.timetable %></li>
-</ul>
+<% @user.clubs.each do |c| %>
+<div class="card text-white bg-dark mb-3" style="max-width: 24rem;">
+<div class="card-header" style="font-weight: bold"><%= c.name %></div>
+  <div class="card-body">   
+
+    <p style="list-style-type: none"><%="Founder:  #{c.founder}" %></p>
+    <p style="list-style-type: none"><%="Location:  #{c.location}" %></p>
+    <p style="list-style-type: none"><%="Timtable:  #{c.timetable}" %></p>
+</div>
+</div>
 <% end %>
+
+
