@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   root "application#home"
   
   get "home", to: "application#home"
+  get "find_new_club", to: "application#find_new_club"
 end
