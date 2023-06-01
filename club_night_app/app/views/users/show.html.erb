@@ -11,3 +11,12 @@
 <br>
 <%= @user.about %>
 <br>
+<h2>My Clubs</h2>
+<%= @user.clubs.each do |c| %>
+<ul>
+    <li><%= c.name %></li>
+    <li><%= c.founder %></li>
+    <li><%= c.location %></li>
+    <li><%= c.timetable %></li>
+</ul>
+<% end %>

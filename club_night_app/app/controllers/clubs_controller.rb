@@ -19,7 +19,7 @@ class ClubsController < ApplicationController
 
     def create
         Club.create(club_params)
-        redirect_to clubs_path
+        redirect_to find_new_club_path
     end
 
     def edit
@@ -32,7 +32,7 @@ class ClubsController < ApplicationController
 
     def destroy
         @club.destroy
-        redirect_to clubs_path
+        redirect_to find_new_club_path
     end
 
     

@@ -1,4 +1,10 @@
-<h1 class="text-center"><%= pluralize(@clubs.count, "result") %></h1>
+<%= link_to "Create New Club", new_club_path %>
+
+
+<%# <h1 class="text-center"><%= pluralize(@clubs.count, "result") %>
+<%# </h1>  %>
+
+
 <%= render 'search/form' %>
 
 <div class="container" style="margin-top: 10px">
