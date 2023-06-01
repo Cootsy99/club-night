@@ -15,7 +15,7 @@
     
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="/">
       
     <img src="<%= asset_path('logo2.png')%>" alt="Logo" class="navbar-logo">
@@ -26,12 +26,15 @@
 
      
       <% if user_signed_in?%>
-      Welcome <%= current_user.name%> 
       <%= link_to "Home", root_path %>
+      &nbsp; | &nbsp;
       <%= link_to "My Profile", user_path(current_user) %>
+      &nbsp; | &nbsp;
       <%= link_to "Memberships", memberships_path %>
 
       &nbsp; | &nbsp;
+      Welcome <%= current_user.name%> 
+      &nbsp;
       <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}%>
       <%else%>
       <%= link_to "Login", new_user_session_path%>
@@ -50,17 +53,6 @@
   <div class="container">
     <%= yield %>
   </div>
-
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
-
 
   </body>
 </html>
