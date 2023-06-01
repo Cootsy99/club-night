@@ -20,9 +20,11 @@
 <h2>My Memberships</h2>
 
 <%= link_to "New membership", new_membership_path %>
-
+<div class="row">
 <% @memberships.each do |m| %>
-<div class="card text-white bg-dark mb-3 border border-success" style="max-width: 24rem; border-width: 3px">
+<div class="col-sm-6">
+
+<div class="card text-white bg-dark mb-3 border border-success" style="max-width: 40vw; border-width: 3px">
 <div class="card-header" style="font-weight: bold"><%= link_to m.club.name, club_path(m.club) %></div>
   <div class="card-body">   
 
@@ -37,5 +39,8 @@
 
 </div>
 </div>
+
+</div>
 <% end %>
+</div>
 

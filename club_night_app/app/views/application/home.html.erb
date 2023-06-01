@@ -2,3 +2,26 @@
 
 <h2> My Clubs </h2>
 <%= link_to "Find new club", find_new_club_path %>
+<div class="row">
+<% @memberships.each do |m| %>
+<div class="col-sm-6">
+<div class="card text-white bg-dark mb-3 border border-success" style="max-width: 40vw; border-width: 3px">
+<div class="card-header" style="font-weight: bold"><%= link_to m.club.name, club_path(m.club) %></div>
+  <div class="card-body">   
+
+    <p style="list-style-type: none"><%="Founder:  #{m.club.founder}" %></p>
+    <p style="list-style-type: none"><%="Location:  #{m.club.location}" %></p>
+    <p style="list-style-type: none"><%="Timtable:  #{m.club.timetable}" %></p>
+    <%= link_to "Edit", edit_membership_path(m) %> |
+    <%= link_to "Delete", membership_path(m), data: {
+                    turbo_method: :delete, 
+                    turbo_confirm: "Are you sure you want to delete?"} %>
+
+
+</div>
+</div>
+
+</div>
+
+<% end %>
+</div>
