@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'session/show'
   get 'members', to: "members#index"
   get 'find_new_club', to: "search#index"
   devise_for :users, :path => 'u'

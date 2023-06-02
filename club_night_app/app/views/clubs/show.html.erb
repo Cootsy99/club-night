@@ -4,19 +4,20 @@
   <%= link_to("Join #{@club.name}", new_membership_path(club_id: @club.id, club_name: @club.name), class: "btn btn-primary mt-3") %>
 
 
+
   <div class="row mt-4">
     <div class="col-md-6">
-      <div class="card text-white bg-dark">
-        <div class="card-body text-center">
-          <h5 class="card-title">Founder</h5>
+      <div class="card text-white bg-dark text-center">
+      <div class="card-header"><h5>Founder</h5></div>
+        <div class="card-body ">
           <p class="card-text"><%= @club.founder %></p>
         </div>
       </div>
     </div>
     <div class="col-md-6">
-      <div class="card text-white bg-dark">
+      <div class="card text-white bg-dark text-center">
+        <div class="card-header"><h5 class="card-title">Location</h5></div>
         <div class="card-body text-center">
-          <h5 class="card-title">Location</h5>
           <p class="card-text"><%= @club.location %></p>
         </div>
       </div>
@@ -25,23 +26,27 @@
 
   <div class="row mt-4">
     <div class="col-md-6">
-      <div class="card text-white bg-dark">
+      <div class="card text-white bg-dark text-center">
+        <div class="card-header"><h5 class="card-title">Timetable</h5></div>
         <div class="card-body text-center">
-          <h5 class="card-title">Timetable</h5>
           <p class="card-text"><%= @club.timetable %></p>
         </div>
       </div>
     </div>
     <div class="col-md-6">
-      <div class="card text-white bg-dark">
+      <div class="card text-white bg-dark text-center">
+        <div class="card-header"><h5 class="card-title">Members</h5></div>
+
         <div class="card-body text-center">
-          <h5 class="card-title">Members</h5>
           <p class="card-text"><%= link_to pluralize(@club.users.count, "Member"), members_path(club_id: @club.id, club_name: @club.name) %></p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+  <%# <%= link_to("Start Session", find_new_club_path, class: "btn btn-primary mt-3") %> %>
 
 
 
