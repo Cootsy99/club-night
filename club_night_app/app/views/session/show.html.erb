@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'session' %>
+
 <h1><%=@club.name %> - Session Started</h1>
 <br>
 
@@ -9,13 +11,23 @@
 
 <br>
 
+<div id="result"></div>
 
 <div class="container">
   <div class="row">
     <div class="col-md-3 text-center">
         <h3>Court 1</h3>
-      <div class="court"></div>
+      <div class="court court1"></div>
+
+
+    <%= form_tag({ controller: "session", action: "random", club_id: @club.id }, method: :post) do %>
+      <%= submit_tag "Create Match", class: "btn btn-primary" %>
+    <% end %>
+    <% if @random_players.present? %>
+      <div><%= @random_players %></div>
+    <% end %>
     </div>
+
     <div class="col-md-3 text-center">
         <h3>Court 2</h3>
 
@@ -31,5 +43,21 @@
 
       <div class="court"></div>
     </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<button id="randomButton">Pick Random Users</button>
+
+<div class="container players-waiting" style="border: 1px solid black;">
+  <div class="row">
+    <h3>Players Waiting</h3>
+    <ul class="list-group">
+      <% Membership.where(waiting_to_play: true, club_id: @club.id, present: true).each do |membership| %>
+        <li class="list-group-item"><%= membership.user.name %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

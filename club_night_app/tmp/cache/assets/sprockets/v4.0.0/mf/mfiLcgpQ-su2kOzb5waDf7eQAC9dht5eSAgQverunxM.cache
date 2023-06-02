@@ -1,0 +1,12 @@
+{:uriI"Žfile://app/assets/builds/session.js.map?type=application/js-sourcemap+json&id=f070aa51fb136b1b72eb5aef69e473ef290c837bf90600ab889d112285fe56dd:ET:load_pathI"app/assets/builds;T:filenameI"%app/assets/builds/session.js.map;T:	nameI"session;T:logical_pathI"session.js.map;T:content_typeI""application/js-sourcemap+json;T:sourceI"G{
+  "version": 3,
+  "sources": ["../../javascript/session.js"],
+  "sourcesContent": ["document.addEventListener(\"DOMContentLoaded\", function () {\n  let randomButton = document.getElementById(\"randomButton\");\n  let court1 = document.querySelector(\".court1\");\n\n  randomButton.addEventListener(\"click\", function () {\n    // Make an AJAX request to retrieve the random users\n    fetch(\"/session/random?count=4\")\n      .then((response) => response.json())\n      .then((data) => {\n        // Render the randomly selected users in the container\n        randomUsersContainer.innerHTML = \"\";\n        data.forEach(function (user) {\n          var userElement = document.createElement(\"p\");\n          userElement.textContent = user.name;\n          randomUsersContainer.appendChild(userElement);\n        });\n      })\n      .catch((error) => console.error(error));\n  });\n});\n"],
+  "mappings": ";;AAAA,WAAS,iBAAiB,oBAAoB,WAAY;AACxD,QAAI,eAAe,SAAS,eAAe,cAAc;AACzD,QAAI,SAAS,SAAS,cAAc,SAAS;AAE7C,iBAAa,iBAAiB,SAAS,WAAY;AAEjD,YAAM,yBAAyB,EAC5B,KAAK,CAAC,aAAa,SAAS,KAAK,CAAC,EAClC,KAAK,CAAC,SAAS;AAEd,6BAAqB,YAAY;AACjC,aAAK,QAAQ,SAAU,MAAM;AAC3B,cAAI,cAAc,SAAS,cAAc,GAAG;AAC5C,sBAAY,cAAc,KAAK;AAC/B,+BAAqB,YAAY,WAAW;AAAA,QAC9C,CAAC;AAAA,MACH,CAAC,EACA,MAAM,CAAC,UAAU,QAAQ,MAAM,KAAK,CAAC;AAAA,IAC1C,CAAC;AAAA,EACH,CAAC;",
+  "names": []
+}
+;T:metadata{
+:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Zprocessors:type=application/js-sourcemap+json&file_type=application/js-sourcemap+json;TTI"3file-digest://app/assets/builds/session.js.map;TTF:charsetI"
+utf-8;F:digest"%¥â•ìã#`0ï(h]MUcM1µ§›SZóšˆh}:lengthiG:environment_versionI"1.0;T:dependencies_digest"%K60:¿«YÑÃr/é¬—Ž¦^Ì<k±sžžªS7::idI"Ef070aa51fb136b1b72eb5aef69e473ef290c837bf90600ab889d112285fe56dd;F
