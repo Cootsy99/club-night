@@ -46,7 +46,7 @@
 </div>
 
 
-  <%# <%= link_to("Start Session", find_new_club_path, class: "btn btn-primary mt-3") %> %>
+  <%= link_to("Start Session", session_show_path(club: @club, members: @club.users), class: "btn btn-primary mt-3") %>
 
 
 
