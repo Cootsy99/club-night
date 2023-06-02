@@ -1,4 +1,12 @@
 <h1>Players</h1>
 <%@club.users.each do |u|%>
-    <p><%=u.name%></p>
+<span><%=u.name%></span>
+<div class="form-check form-switch">
+    
+
+  <input class="form-check-input" type="checkbox" id="attendanceToggle" <%= u.name? ? 'checked' : '' %>>
+  <label class="form-check-label" for="attendanceToggle">
+    <%= u.name? ? 'Present' : 'Absent' %>
+  </label>
+</div>
 <%end%>
