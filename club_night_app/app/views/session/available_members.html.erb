@@ -1,12 +1,18 @@
 <h1>Players</h1>
+<h3>Toggle players who are present</h3>
 <%@club.users.each do |u|%>
-<span><%=u.name%></span>
-<div class="form-check form-switch">
-    
+<%membership = Membership.find_by(user_id: u.id, club_id: @club.id)%>
 
-  <input class="form-check-input" type="checkbox" id="attendanceToggle" <%= u.name? ? 'checked' : '' %>>
-  <label class="form-check-label" for="attendanceToggle">
-    <%= u.name? ? 'Present' : 'Absent' %>
-  </label>
-</div>
+<%=form_tag do%>
+    <%= render 'membership_form', u: u, membership: membership%>
 <%end%>
+
+<%end%>
+
+
+<%= link_to("Back to Session", session_show_path(club: @club), class: "btn btn-primary mt-3") %>
+<%# update_membership_path(membership.id) %>
+
+<%# Manually add the url/path to the form to submit the POST request  %>
+<%# Make sure I define a PUT/PATCH route to call on form submit %>
+

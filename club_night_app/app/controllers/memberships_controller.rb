@@ -31,14 +31,21 @@ class MembershipsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @membership.update(membership_params)
-        format.html { redirect_to user_path(current_user), notice: "Membership was successfully updated." }
-        # format.json { render :show, status: :ok, location: @appointment }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        # format.json { render json: @appointment.errors, status: :unprocessable_entity }
+    puts("UPDATED")
+    if @membership
+      respond_to do |format|
+        if @membership.update(membership_params)
+          format.html { redirect_to user_path(current_user), notice: "Membership was successfully updated." }
+          # format.json { render :show, status: :ok, location: @appointment }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          # format.json { render json: @appointment.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      # render json: {status: @membership.present}
+      # render 
+      head :no_content
     end
   end
 
@@ -53,10 +60,12 @@ class MembershipsController < ApplicationController
 
   private
     def set_membership
-      @membership = Membership.find(params[:id])
+      if params[:id]
+        @membership = Membership.find(params[:id])
+      end
     end
 
     def membership_params
-      params.require(:membership).permit(:club_id, :user_id, :admin, :level, :membership_type, :membership_expiry)
+      params.require(:membership).permit(:club_id, :user_id, :admin, :level, :present, :membership_type, :membership_expiry)
     end
 end
