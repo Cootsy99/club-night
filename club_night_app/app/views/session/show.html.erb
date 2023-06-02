@@ -15,16 +15,31 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3 text-center">
-        <h3>Court 1</h3>
-      <div class="court court1"></div>
+
+<div class="col-md-3 text-center">
+  <h3>Court 1</h3>
+  <div class="court court1">
+    <% if @random_players.present? %>
+      <div class="row">
+        <% @random_players.each do |player| %>
+          <div class="col-md-6">
+            <div class="player">
+              <%= Membership.find(player).user.name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
 
-    <%= form_tag({ controller: "session", action: "random", club_id: @club.id }, method: :post) do %>
+
+
+    <%= form_tag({ controller: "session", action: "random1", club_id: @club.id }, method: :post) do %>
       <%= submit_tag "Create Match", class: "btn btn-primary" %>
     <% end %>
-    <% if @random_players.present? %>
-      <div><%= @random_players %></div>
+    <%= form_tag({ controller: "session", action: "end_game_1", club_id: @club.id, players: @random_players }, method: :post) do %>
+      <%= submit_tag "End Match", class: "btn btn-primary" %>
     <% end %>
     </div>
 

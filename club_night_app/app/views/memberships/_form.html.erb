@@ -11,7 +11,10 @@
     </div>
   <% end %>
 
- 
+ <div>
+    <%= form.label :waiting_to_play, style: "display: block" %>
+    <%= form.select :waiting_to_play, [true, false] %>
+  </div>
 
   <div>
     <%= form.label :club_id, style: "display: block" %>
