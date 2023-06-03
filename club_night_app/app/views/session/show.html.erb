@@ -39,13 +39,13 @@
       <%= form_tag(
         { controller: "session", action: "random", club_id: @club.id, court: 1 },
          method: :post) do %>
-        <%= submit_tag "Create Match", class: "btn btn-primary" %>
+        <%= submit_tag "Create Match", class: "btn btn-primary create1" %>
       <% end %>
 
       <%= form_tag(
         { controller: "session", action: "end_game", club_id: @club.id, court: 1},
          method: :post) do %>
-          <%= submit_tag "End Match", class: "btn btn-primary" %>
+          <%= submit_tag "End Match", class: "btn btn-primary end1" %>
         <% end %>
 
     </div>
@@ -181,3 +181,4 @@
     </ul>
   </div>
 </div>
+
