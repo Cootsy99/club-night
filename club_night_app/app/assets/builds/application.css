@@ -19716,7 +19716,8 @@ textarea.form-control-lg {
   padding-bottom: 125%;
 }
 
-.resting-form-container {
+.resting-form-container,
+.ready-form-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;

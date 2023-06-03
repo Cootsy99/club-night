@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   post 'session/random'
   post 'session/end_game'
-  post 'session/update_resting'
+  post 'session/need_rest'
+  post 'session/end_rest'
+
 
   put 'session/players', to: "session#update_attendance"
   get 'session/players', to: "session#available_members"

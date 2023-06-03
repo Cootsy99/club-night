@@ -1,0 +1,9 @@
+<div class = "ready-form-container">
+<form action="<%= session_end_rest_path %>" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :membership, membership %>
+  <%= hidden_field_tag :club_id, club_id %>
+
+  <button type="submit" class="btn btn-primary">Ready to play!</button>
+</form>
+</div>

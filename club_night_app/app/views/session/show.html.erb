@@ -4,6 +4,10 @@
 
 <br>
 
+<%= link_to("End Session", club_path(@club), class: "btn btn-danger mt-3") %>
+
+<br>
+
 <%= link_to("Players", session_players_path(club: @club), class: "btn btn-primary mt-3") %>
 
 <br>
@@ -194,7 +198,10 @@
       <ul class="list-group">
         <% Membership.where(resting: true, club_id: @club.id, present: true).each do |membership| %>
           <li class="list-group-item" style="margin-bottom: 5px">
-            <%= membership.user.name %>
+             <div class="d-flex align-items-center justify-content-between">
+              <span><%= membership.user.name %></span>
+              <%= render "ready_form", membership: membership.id, club_id: @club.id %>
+            </div>
           </li>
         <% end %>
       </ul>
@@ -203,3 +210,19 @@
 </div>
 
 
+
+<script>
+console.log('Script executed successfully');
+
+  window.addEventListener('beforeunload', function() {
+    console.log("IN SETTER")
+    localStorage.setItem('scrollPosition', window.pageYOffset);
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash) {
+    const scrollPosition = parseInt(window.location.hash.split('-')[1]);
+    window.scrollTo(0, scrollPosition);
+  }
+});
+</script>

@@ -56,7 +56,12 @@
   <div class="container">
     <%= yield %>
   </div>
-
+  <script>
+     window.addEventListener('beforeunload', function() {
+    console.log("IN SETTER")
+    localStorage.setItem('scrollPosition', window.pageYOffset);
+    });
+  </script>
   </body>
 </html>
 

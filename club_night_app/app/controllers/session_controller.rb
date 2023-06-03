@@ -41,10 +41,18 @@ class SessionController < ApplicationController
     redirect_to session_show_path(club: params[:club_id])
   end
 
-  def update_resting
+  def need_rest
     @membership = Membership.find(params[:membership])
     @membership.resting = true
     @membership.waiting_to_play = false
+    @membership.save
+    redirect_to session_show_path(club: params[:club_id])
+  end
+
+  def end_rest
+    @membership = Membership.find(params[:membership])
+    @membership.resting = false
+    @membership.waiting_to_play = true
     @membership.save
     redirect_to session_show_path(club: params[:club_id])
   end
