@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   # scope '/random' do
   #   get 'session/show', to: "session#random"
   # end
-  post 'session/random1'
+  post 'session/random_1'
   post 'session/end_game_1'
+  post 'session/random_2'
+  post 'session/end_game_2'
+
   put 'session/players', to: "session#update_attendance"
   get 'session/players', to: "session#available_members"
   get 'members', to: "members#index"
