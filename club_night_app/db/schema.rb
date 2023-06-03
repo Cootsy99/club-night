@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_03_110750) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_03_121930) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_110750) do
     t.boolean "present", default: false
     t.boolean "waiting_to_play", default: true
     t.integer "court", default: 0
+    t.boolean "resting", default: false
     t.index ["club_id"], name: "index_memberships_on_club_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
