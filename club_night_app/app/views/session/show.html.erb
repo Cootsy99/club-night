@@ -19,20 +19,17 @@
 <div class="col-md-3 text-center">
   <h3>Court 1</h3>
   <div class="court court1">
-    <% if @current_players[0].any? %>
-      <%puts "ENTERING THE IF STATEMENT IN THE VIEW CORRECTLY!!!!"%>
-      <div class="row">
-        <% @current_players[0].each do |player| %>
-          <div class="col-md-6">
-            <div class="player">
-              <%= Membership.find(player).user.name %>
-            </div>
-          </div>
-        <% end %>
+    <div class="row">
+      <% Membership.where(court: 1, club_id: @club.id, present: true).each do |membership| %>
+      <div class="col-md-6">
+        <div class="player">
+          <%= Membership.find(membership.id).user.name %>
+        </div>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-    <%= form_tag({ controller: "session", action: "random_1", club_id: @club.id, current_players: @current_players }, method: :post) do %>
+    <%= form_tag({ controller: "session", action: "random_1", club_id: @club.id }, method: :post) do %>
       <%= submit_tag "Create Match", class: "btn btn-primary" %>
     <% end %>
     <%= form_tag({ controller: "session", action: "end_game_1", club_id: @club.id, players: @random_players_1 }, method: :post) do %>

@@ -1,14 +1,13 @@
 class SessionController < ApplicationController
   def show
-    
     @club = Club.find(params[:club])
     @members = params[:members]
-    if params[:current_players].present?
-      puts "Current players is being defined correctly #########################"
-      @current_players = params[:current_players]
-    else
-      @current_players = [[],[],[],[]]
-    end
+    # if params[:current_players].present?
+    #   puts "Current players is being defined correctly #########################"
+    #   @current_players = params[:current_players]
+    # else
+    #   @current_players = [[],[],[],[]]
+    # end
   end
 
   def available_members
@@ -23,17 +22,27 @@ class SessionController < ApplicationController
   end
 
   def random_1
-    @current_players = params[:current_players]
     @random_players_1 = Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true).order(Arel.sql('RANDOM()')).limit(4) 
     @random_players_1.each do |player| 
       player.waiting_to_play = false
+      player.court = 1
       player.save
-      @current_players[0] << player.id
     end
-    @current_players[0].shift
-    puts "current players: #{@current_players}"
-    redirect_to session_show_path(club: params[:club_id], current_players: @current_players)
+    redirect_to session_show_path(club: params[:club_id])
   end
+
+  # def random_1
+  #   @current_players = params[:current_players]
+  #   @random_players_1 = Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true).order(Arel.sql('RANDOM()')).limit(4) 
+  #   @random_players_1.each do |player| 
+  #     player.waiting_to_play = false
+  #     player.save
+  #     @current_players[0] << player.id
+  #   end
+  #   @current_players[0].shift
+  #   puts "current players: #{@current_players}"
+  #   redirect_to session_show_path(club: params[:club_id], current_players: @current_players)
+  # end
 
   def end_game_1
     @players = Membership.where(id: params[:players])
