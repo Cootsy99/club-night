@@ -177,7 +177,12 @@
       <h3>Players Waiting</h3>
       <ul class="list-group">
         <% Membership.where(waiting_to_play: true, club_id: @club.id, present: true).each do |membership| %>
-          <li class="list-group-item"><%= membership.user.name %></li>
+          <li class="list-group-item" style="margin-bottom: 5px">
+            <div class="d-flex align-items-center justify-content-between">
+              <span><%= membership.user.name %></span>
+              <%= render "resting_form", membership: membership.id, club_id: @club.id %>
+            </div>
+          </li>
         <% end %>
       </ul>
     </div>
@@ -187,10 +192,14 @@
     <div class="container players-resting" style="border: 1px solid black;">
       <h3>Players Resting</h3>
       <ul class="list-group">
-        <% Membership.where(waiting_to_play: true, club_id: @club.id, present: true).each do |membership| %>
-          <li class="list-group-item"><%= membership.user.name %></li>
+        <% Membership.where(resting: true, club_id: @club.id, present: true).each do |membership| %>
+          <li class="list-group-item" style="margin-bottom: 5px">
+            <%= membership.user.name %>
+          </li>
         <% end %>
       </ul>
     </div>
   </div>
 </div>
+
+

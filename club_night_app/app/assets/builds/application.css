@@ -19715,3 +19715,9 @@ textarea.form-control-lg {
   background-color: lightgreen;
   padding-bottom: 125%;
 }
+
+.resting-form-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
