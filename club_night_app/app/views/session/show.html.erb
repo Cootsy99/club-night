@@ -23,21 +23,19 @@
 
       <div class="court court1">
 
-        <div class="row">
+        <%# <div class="row"> %>
 
           <% Membership.where(
             court: 1, club_id: @club.id, present: true)
             .each do |membership| %>
 
-            <div class="col-md-6">
-              <div class="player">
-                <%= Membership.find(membership.id).user.name %>
-              </div>
+            <div class="d-flex align-items-center justify-content-center">
+              <p><%= Membership.find(membership.id).user.name %></p>
             </div>
 
           <% end %>
 
-        </div>
+        <%# </div> %>
 
       </div>
 
@@ -60,21 +58,15 @@
 
       <div class="court court2">
 
-        <div class="row">
-
           <% Membership.where(
             court: 2, club_id: @club.id, present: true)
             .each do |membership| %>
 
-            <div class="col-md-6">
-              <div class="player">
-                <%= Membership.find(membership.id).user.name %>
-              </div>
+            <div class="d-flex align-items-center justify-content-center">
+              <p><%= Membership.find(membership.id).user.name %></p>
             </div>
 
           <% end %>
-
-        </div>
 
       </div>
 
@@ -97,21 +89,19 @@
 
       <div class="court court2">
 
-        <div class="row">
+
 
           <% Membership.where(
             court: 3, club_id: @club.id, present: true)
             .each do |membership| %>
 
-            <div class="col-md-6">
-              <div class="player">
-                <%= Membership.find(membership.id).user.name %>
-              </div>
+            <div class="d-flex align-items-center justify-content-center">
+              <p><%= Membership.find(membership.id).user.name %></p>
             </div>
 
           <% end %>
 
-        </div>
+
 
       </div>
 
@@ -134,21 +124,17 @@
 
       <div class="court court2">
 
-        <div class="row">
 
           <% Membership.where(
             court: 4, club_id: @club.id, present: true)
             .each do |membership| %>
 
-            <div class="col-md-6">
-              <div class="player">
-                <%= Membership.find(membership.id).user.name %>
-              </div>
+            <div class="d-flex align-items-center justify-content-center">
+              <p><%= Membership.find(membership.id).user.name %></p>
             </div>
 
           <% end %>
 
-        </div>
 
       </div>
 
