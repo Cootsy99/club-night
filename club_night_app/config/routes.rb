@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post 'session/end_game'
   post 'session/need_rest'
   post 'session/end_rest'
+  post 'session/fixed_ability'
+
 
 
 

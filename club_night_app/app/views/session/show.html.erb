@@ -6,8 +6,6 @@
 
 <%= link_to("End Session", club_path(@club), class: "btn btn-danger mt-3") %>
 
-<%= link_to("Create Match", session_create_match_path(court: 1, club: @club), class: "btn btn-warning mt-3") %>
-
 
 <br>
 
@@ -43,11 +41,7 @@
 
       </div>
 
-      <%= form_tag(
-        { controller: "session", action: "random", club_id: @club.id, court: 1 },
-         method: :post) do %>
-        <%= submit_tag "Create Match", class: "btn btn-primary create1" %>
-      <% end %>
+      <%= link_to("Create Match", session_create_match_path(court: 1, club_id: @club), class: "btn btn-warning mt-3") %>
 
       <%= form_tag(
         { controller: "session", action: "end_game", club_id: @club.id, court: 1},

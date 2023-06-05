@@ -16,13 +16,17 @@ class SessionController < ApplicationController
   end
 
   def random
-    @existing_players = Membership.where(club_id: params[:club_id], present: true, court: params[:court])
-    @existing_players.each do |player| 
-      player.waiting_to_play = true
-      player.court = 0
+    @random_players = Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true).order(Arel.sql('RANDOM()')).limit(4) 
+    @random_players.each do |player| 
+      player.waiting_to_play = false
+      player.court = params[:court]
       player.save
     end
-    @random_players = Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true).order(Arel.sql('RANDOM()')).limit(4) 
+    redirect_to session_show_path(club: params[:club_id])
+  end
+
+  def fixed_ability
+    @random_players = Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true, level: params[:level]).order(Arel.sql('RANDOM()')).limit(4) 
     @random_players.each do |player| 
       player.waiting_to_play = false
       player.court = params[:court]
@@ -58,7 +62,19 @@ class SessionController < ApplicationController
   end
 
   def create_match
-    
+    @existing_players = Membership.where(club_id: params[:club_id], present: true, court: params[:court])
+    @existing_players.each do |player| 
+      player.waiting_to_play = true
+      player.court = 0
+      player.save
+    end
   end
+
+
+
+  # def confirm_players
+  #   @players = Membership.where(club_id: params[:club_id], present: true, court: params[:court])
+    
+  # end
 
 end

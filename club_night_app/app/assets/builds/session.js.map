@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["../../javascript/session.js"],
-  "sourcesContent": ["document.addEventListener(\"DOMContentLoaded\", function () {\n  let randomButton = document.getElementById(\"randomButton\");\n  let court1 = document.querySelector(\".court1\");\n\n  randomButton.addEventListener(\"click\", function () {\n    // Make an AJAX request to retrieve the random users\n    fetch(\"/session/random?count=4\")\n      .then((response) => response.json())\n      .then((data) => {\n        // Render the randomly selected users in the container\n        randomUsersContainer.innerHTML = \"\";\n        data.forEach(function (user) {\n          var userElement = document.createElement(\"p\");\n          userElement.textContent = user.name;\n          randomUsersContainer.appendChild(userElement);\n        });\n      })\n      .catch((error) => console.error(error));\n  });\n});\n"],
-  "mappings": ";;AAAA,WAAS,iBAAiB,oBAAoB,WAAY;AACxD,QAAI,eAAe,SAAS,eAAe,cAAc;AACzD,QAAI,SAAS,SAAS,cAAc,SAAS;AAE7C,iBAAa,iBAAiB,SAAS,WAAY;AAEjD,YAAM,yBAAyB,EAC5B,KAAK,CAAC,aAAa,SAAS,KAAK,CAAC,EAClC,KAAK,CAAC,SAAS;AAEd,6BAAqB,YAAY;AACjC,aAAK,QAAQ,SAAU,MAAM;AAC3B,cAAI,cAAc,SAAS,cAAc,GAAG;AAC5C,sBAAY,cAAc,KAAK;AAC/B,+BAAqB,YAAY,WAAW;AAAA,QAC9C,CAAC;AAAA,MACH,CAAC,EACA,MAAM,CAAC,UAAU,QAAQ,MAAM,KAAK,CAAC;AAAA,IAC1C,CAAC;AAAA,EACH,CAAC;",
+  "sources": [],
+  "sourcesContent": [],
+  "mappings": "",
   "names": []
 }
