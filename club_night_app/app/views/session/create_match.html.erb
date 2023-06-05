@@ -10,7 +10,7 @@
         <%= submit_tag "Random", class: "btn btn-primary btn-lg random-players" %>
       <% end %>
 
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
   Fixed Abilty
 </button>
 
@@ -19,7 +19,7 @@
 
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="myModalLabel">Ability Selector</h5>
@@ -32,19 +32,19 @@
         <%= form_tag(
         { controller: "session", action: "fixed_ability", club_id: params[:club_id], court: params[:court], level: "Beginner" },
          method: :post) do %>
-        <%= submit_tag "Beginner", class: "btn btn-primary random-players" %>
+        <%= submit_tag "Beginner (#{Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true, level: "Beginner").count} available)", class: "btn btn-primary random-players" %>
       <% end %>
 
         <%= form_tag(
         { controller: "session", action: "fixed_ability", club_id: params[:club_id], court: params[:court], level: "Intermediate" },
          method: :post) do %>
-        <%= submit_tag "Intermediate", class: "btn btn-primary" %>
+        <%= submit_tag "Intermediate (#{Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true, level: "Intermediate").count} available)", class: "btn btn-primary" %>
       <% end %>
 
         <%= form_tag(
         { controller: "session", action: "fixed_ability", club_id: params[:club_id], court: params[:court], level: "Expert" },
          method: :post) do %>
-        <%= submit_tag "Expert", class: "btn btn-primary " %>
+        <%= submit_tag "Expert (#{Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true, level: "Expert").count} available)", class: "btn btn-primary " %>
       <% end %>
 
       </div>
@@ -69,8 +69,11 @@
         <li class="row">
           <% memberships.each do |membership| %>
             <div class="list-group-item col-md-4" style="margin-bottom: 5px">
-              <div class="d-flex align-items-center justify-content-between">
-                <span><%= membership.user.name %></span>
+              <div class="d-flex align-items-center align-items-middle justify-content-between">
+              <p style= "margin: 0">
+              <%= membership.user.name %>
+              <span class="text-muted"> <%= " - #{membership.level}" %></span>
+              </p>
               </div>
             </div>
           <% end %>

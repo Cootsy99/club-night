@@ -62,7 +62,7 @@ class SessionController < ApplicationController
   end
 
   def create_match
-    @existing_players = Membership.where(club_id: params[:club_id], present: true, court: params[:court])
+    @existing_players = Membership.where(club_id: params[:club_id], present: true, court: params[:court], waiting_to_play: false)
     @existing_players.each do |player| 
       player.waiting_to_play = true
       player.court = 0
