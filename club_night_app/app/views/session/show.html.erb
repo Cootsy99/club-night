@@ -6,6 +6,9 @@
 
 <%= link_to("End Session", club_path(@club), class: "btn btn-danger mt-3") %>
 
+<%= link_to("Create Match", session_create_match_path(court: 1, club: @club), class: "btn btn-warning mt-3") %>
+
+
 <br>
 
 <%= link_to("Players", session_players_path(club: @club), class: "btn btn-primary mt-3") %>

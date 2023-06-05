@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   get 'session/show', to: "session#show"
-
+  get 'session/create_match', to: "session#create_match"
   post 'session/random'
   post 'session/end_game'
   post 'session/need_rest'
   post 'session/end_rest'
+
 
 
   put 'session/players', to: "session#update_attendance"

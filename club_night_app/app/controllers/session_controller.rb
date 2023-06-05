@@ -57,4 +57,8 @@ class SessionController < ApplicationController
     redirect_to session_show_path(club: params[:club_id])
   end
 
+  def create_match
+    
+  end
+
 end
