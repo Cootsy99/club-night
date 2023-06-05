@@ -1,12 +1,16 @@
 <h1>Players</h1>
 <h3>Toggle players who are present</h3>
-<%@club.users.each do |u|%>
-<%membership = Membership.find_by(user_id: u.id, club_id: @club.id)%>
-
-<%=form_tag do%>
-    <%= render 'membership_form', u: u, membership: membership%>
-<%end%>
-
+<%@club.users.each_slice(3) do |memberships|%>
+    <div class="row">
+        <% memberships.each do |u| %>
+            <div class="list-group-item col-md-4 align-items-center align-items-middle" style="margin-bottom: 5px">
+                <%membership = Membership.find_by(user_id: u.id, club_id: @club.id)%>
+                <%=form_tag do%>
+                    <%= render 'membership_form', u: u, membership: membership%>
+                <%end%>
+            </div>
+        <%end%>
+    </div>
 <%end%>
 
 

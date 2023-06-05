@@ -1,14 +1,18 @@
 <%= form_with(method: :put) do |form| %>
 
-<div class="form-check form-switch">
+<div class="form-check form-switch container">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= form.hidden_field :membership, value: membership.id %>
 
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= form.hidden_field :membership, value: membership.id %>
-    <%= membership.user.name %>
-    <%= form.check_box :present, 
-    {class: "form-check-input", onchange: "this.form.submit()", checked: membership.present? }, 
-    true, false %>
-
+ <div class="container p-2" style="width: 30vw;">
+  <div class="align-items-center">
+    <%= form.check_box :present,
+      { class: "form-check-input", onchange: "this.form.submit()", checked: membership.present? },
+      true, false %>
+    <span class="ml-2"><%= membership.user.name %></span>
   </div>
+</div>
+
+</div>
 
 <% end %>
