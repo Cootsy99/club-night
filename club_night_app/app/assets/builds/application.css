@@ -19695,9 +19695,13 @@ textarea.form-control-lg {
   content: "\f8cc";
 }
 
-/**= require_tree club_night_app/app/assets/fonts/Roboto*/
+@font-face {
+  font-family: "my_font";
+  src: url("club_night_app/app/assets/fonts/IBMPlexMono-SemiBold.ttf") format("truetype");
+}
 body {
-  font-family: "Roboto";
+  font-family: "Roboto Regular";
+  background-color: red;
 }
 
 .navbar-logo {

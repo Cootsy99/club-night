@@ -1,10 +1,15 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
-/**= require_tree club_night_app/app/assets/fonts/Roboto*/
-// @import "/bootstrap";
+
+@font-face {
+  font-family: "my_font";
+  src: url("club_night_app/app/assets/fonts/IBMPlexMono-SemiBold.ttf")
+    format("truetype");
+}
 
 body {
-  font-family: "Roboto";
+  font-family: "Roboto Regular";
+  background-color: red;
 }
 
 .navbar-logo {
