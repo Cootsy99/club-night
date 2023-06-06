@@ -17,33 +17,46 @@
 <%= @user.about %>
 <br>
 <br>
-<h2>My Memberships</h2>
+<h2>My Clubs</h2>
 
 <%= link_to "New membership", new_membership_path %>
+
 <div class="row">
-<% @memberships.each do |m| %>
-<div class="col-sm-6">
-
-<div class="card text-white bg-dark mb-3 border border-success" style="max-width: 40vw; border-width: 3px">
-<div class="card-header" style="font-weight: bold"><%= link_to m.club.name, club_path(m.club) %></div>
-  <div class="card-body">   
-
-    <p style="list-style-type: none"><%="Founder:  #{m.club.founder}" %></p>
-    <p style="list-style-type: none"><%="Location:  #{m.club.location}" %></p>
-    <p style="list-style-type: none"><%="Timtable:  #{m.club.timetable}" %></p>
-    <p style="list-style-type: none"><%="My Level:  #{m.level}" %></p>
-    <p style="list-style-type: none"><%= link_to "Members:  #{m.club.users.count}", members_path(club_id: m.club.id, club_name: m.club.name) %></p>
-
-    <%= link_to "Edit", edit_membership_path(m) %> |
-    <%= link_to "Delete", membership_path(m), data: {
+  <% @memberships.each do |m| %>
+    <div class="col-sm-6">
+      <div class="card text-white bg-dark mb-3 border border-success" style="max-width: 40vw; border-width: 3px">
+        <div class="card-header" style="font-weight: bold">
+          <div class="row align-items-center"> 
+            <div class="col font-weight-bold" style="font-size: 20px;">
+            <%= m.club.name %>
+            </div>
+            <div class="col-auto", style="margin-bottom: 16px;">
+              <%= link_to("View Club", club_path(m.club), class: "btn btn-success mt-3 mx-0") %>
+            </div>
+            </div>
+        </div>
+        <div class="card-body">
+          <p style="list-style-type: none"><%="Founder:  #{m.club.founder}" %></p>
+          <p style="list-style-type: none"><%="Location:  #{m.club.location}" %></p>
+          <p style="list-style-type: none"><%="Timetable:  #{m.club.timetable}" %></p>
+          <p style="list-style-type: none"><%="My Level:  #{m.level}" %></p>
+          <p style="list-style-type: none">
+            <%= "Members: #{m.club.users.count} " %>
+            <%= link_to "View Members", members_path(club_id: m.club.id, club_name: m.club.name), class: "btn btn-info btn-sm",  style: "margin-left: 15px;" %>
+          </p>
+          <div class="d-flex justify-content-end">
+          <%= link_to("Edit Membership", edit_membership_path(m), class: "btn btn-info btn-sm", style: "margin-right: 5px;") %>
+          <%= link_to("Delete Membership", membership_path(m), data: {
                     turbo_method: :delete, 
-                    turbo_confirm: "Are you sure you want to delete?"} %>
+                    turbo_confirm: "Are you sure you want to delete?"}, class: "btn btn-danger btn-sm") %>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+</div>
 
 
-</div>
-</div>
 
-</div>
-<% end %>
-</div>
-
+   

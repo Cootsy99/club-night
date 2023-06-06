@@ -4,6 +4,7 @@
  * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=IBM+Plex+Mono:wght@100&family=IBM+Plex+Sans:ital@1&family=Roboto&family=Sora&family=Yanone+Kaffeesatz:wght@500&display=swap");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -19700,12 +19701,13 @@ textarea.form-control-lg {
   src: url("club_night_app/app/assets/fonts/IBMPlexMono-SemiBold.ttf") format("truetype");
 }
 body {
-  font-family: "Roboto Regular";
-  background-color: red;
+  font-family: "Roboto", sans-serif;
+  background-color: #e0e9f0;
 }
 
 .navbar-logo {
-  height: 7vh; /* Adjust the height as needed */
+  width: 50%;
+  height: 50%;
   margin-right: 10px; /* Optional margin for spacing */
 }
 
@@ -19716,8 +19718,9 @@ body {
 
 .navbar {
   border: 0;
-  padding: 0 20px;
-  font-family: "Roboto";
+  padding: 0 20px 0 0;
+  background-color: #333333;
+  font-size: large;
 }
 
 .court {

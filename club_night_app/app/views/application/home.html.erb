@@ -1,26 +1,56 @@
+
 <h1>Welcome to Club Night <%= @name %></h1>
+<br>
 
-<h2> My Clubs </h2>
-<%= link_to "Find new club", find_new_club_path %>
+<p>
+'Club Night' is an app designed to make running a sports club night for organisers really simple and make the session really good fun for all club members. 
+<br>
+<br>
+Each club owner will pay a small fee to subscribe to the application and they will create their club and become the default admin. Members 
+of the club can then join the site fore free, create an account and then join their sports clubs. 
+<br>
+<br>
+Club owners can then start a club night 'session' where they will be able to toggle members as present. The app can then be used throughout the session to generate matches. The match generation will 
+have lots of options to ensure a fun and varied experience for all.
+</p>
+<br>
+
 <div class="row">
-<% @memberships.each do |m| %>
-<div class="col-sm-6">
-<div class="card text-white bg-dark mb-3 border border-success" style="max-width: 40vw; border-width: 3px">
-<div class="card-header" style="font-weight: bold"><%= link_to m.club.name, club_path(m.club) %></div>
-  <div class="card-body">   
-
-    <p style="list-style-type: none"><%="Founder:  #{m.club.founder}" %></p>
-    <p style="list-style-type: none"><%="Location:  #{m.club.location}" %></p>
-    <p style="list-style-type: none"><%="Timtable:  #{m.club.timetable}" %></p>
-    <p style="list-style-type: none"><%="My Level:  #{m.level}" %></p>
-
-    <p style="list-style-type: none"><%= link_to "Members:  #{m.club.users.count}", members_path(club_id: m.club.id, club_name: m.club.name) %></p>
-
-
+  <div class="col">
+    <h2>Clubs you are part of:</h2>
+  </div>
+  <div class="col-auto">
+    <%= link_to("Find new club", find_new_club_path, class: "btn btn-info mt-3") %>
+  </div>
 </div>
+<br>
+
+<div class="row">
+  <% @memberships.each do |m| %>
+    <div class="col-sm-6">
+      <div class="card text-white bg-dark mb-3 border border-success" style="max-width: 40vw; border-width: 3px">
+        <div class="card-header" style="font-weight: bold">
+          <div class="row align-items-center"> 
+            <div class="col font-weight-bold" style="font-size: 20px;">
+            <%= m.club.name %>
+            </div>
+            <div class="col-auto", style="margin-bottom: 16px;">
+              <%= link_to("View Club", club_path(m.club), class: "btn btn-success mt-3 mx-0") %>
+            </div>
+            </div>
+        </div>
+        <div class="card-body">
+          <p style="list-style-type: none"><%="Founder:  #{m.club.founder}" %></p>
+          <p style="list-style-type: none"><%="Location:  #{m.club.location}" %></p>
+          <p style="list-style-type: none"><%="Timetable:  #{m.club.timetable}" %></p>
+          <p style="list-style-type: none"><%="My Level:  #{m.level}" %></p>
+          <p style="list-style-type: none">
+            <%= "Members: #{m.club.users.count} " %>
+            <%= link_to "View Members", members_path(club_id: m.club.id, club_name: m.club.name), class: "btn btn-info btn-sm",  style: "margin-left: 15px;" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
-</div>
-
-<% end %>
-</div>
