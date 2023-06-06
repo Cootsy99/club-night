@@ -1,39 +1,44 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+<div class="bg-dark p-4 rounded-lg">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-dark" }) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :email, class: "text-light" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-dark" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+    <div class="form-group">
+      <%= f.label :name, class: "text-light" %>
+      <%= f.text_field :name, autofocus: true, class: "form-control form-control-dark" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :about %><br />
-    <%= f.text_field :about, autofocus: true %>
-  </div>
+    <div class="form-group">
+      <%= f.label :about, class: "text-light" %>
+      <span class="text-light">- Say a little bit about yourself, where you're from, your likes, etc.</span>
+      <%= f.text_field :about, autofocus: true, class: "form-control form-control-dark" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password, class: "text-light" %>
+      <% if @minimum_password_length %>
+        <em class="text-light">(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-dark" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: "text-light" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-dark" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= f.submit "Sign up", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
+
+
 
 <%= render "users/shared/links" %>

@@ -19695,6 +19695,11 @@ textarea.form-control-lg {
   content: "\f8cc";
 }
 
+/**= require_tree club_night_app/app/assets/fonts/Roboto*/
+body {
+  font-family: "Roboto";
+}
+
 .navbar-logo {
   height: 7vh; /* Adjust the height as needed */
   margin-right: 10px; /* Optional margin for spacing */
@@ -19708,6 +19713,7 @@ textarea.form-control-lg {
 .navbar {
   border: 0;
   padding: 0 20px;
+  font-family: "Roboto";
 }
 
 .court {
