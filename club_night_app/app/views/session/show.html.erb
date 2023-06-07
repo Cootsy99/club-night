@@ -167,7 +167,7 @@
             <div class="d-flex align-items-center align-items-middle justify-content-between ">
               <p style= "margin: 0">
               <%= membership.user.name %>
-              <span class="text-muted"> <%= " - #{membership.level}" %></span>
+              <span style="font-style: italic; color: gray; font-size: 15px;"> <%= " - #{membership.level}" %></span>
               </p>
               <%= render "resting_form", membership: membership.id, club_id: @club.id %>
             </div>
@@ -186,7 +186,7 @@
              <div class="d-flex align-items-center align-items-middle justify-content-between">
               <p style= "margin: 0">
               <%= membership.user.name %>
-              <span class="text-muted"> <%= " - #{membership.level}" %></span>
+              <span style="font-style: italic; color: gray; font-size: 15px;"> <%= " - #{membership.level}" %></span>
               </p>
               <%= render "ready_form", membership: membership.id, club_id: @club.id %>
             </div>

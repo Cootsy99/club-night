@@ -3,6 +3,8 @@
 <br>
 <br>
 
+
+
 <div class="button-container d-flex justify-content-around">
     <%= form_tag(
         { controller: "session", action: "random", club_id: params[:club_id], court: params[:court] },
@@ -56,16 +58,17 @@
 
 
 
+
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Manual Selection</h5>
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 class="modal-title" id="myModalLabel">Manual Selection - <%= link_to("Create", session_show_path(club: params[:club_id]), class: "btn btn-outline-success mb-1") %></h5>
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background-color: red; color: white;">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
       <div class="d-table m-3">
         <table class = "table table-dark table-striped">
           <thead>
@@ -78,7 +81,7 @@
           <tbody>
             <% Membership.where(club_id: params[:club_id], present: true, waiting_to_play: true, level: "Beginner").each do |membership| %>
               <tr>
-                <td class="col-2"> <%= membership.user.name%>  </td>
+                <td class="col-2 align-middle"> <%= membership.user.name%>  </td>
                 <td class="col-1">
                   <%=form_tag do%>
                     <%= render 'manual_form', court: params[:court], membership: membership %>
@@ -102,12 +105,11 @@
           <tbody>
             <% Membership.where(club_id: params[:club_id], present: true, waiting_to_play: true, level: "Intermediate").each do |membership| %>
               <tr>
-                <td class="col-2"> <%= membership.user.name%>  </td>
+                <td class="col-2 align-middle"> <%= membership.user.name%>  </td>
                 <td class="col-1">
-                  <%= form_with(model: membership, local: true) do |form| %>
-                    <%= form.check_box :selected %>
-                    <%= form.hidden_field :club_id, value: params[:club_id] %>
-                  <% end %>
+                  <%=form_tag do%>
+                    <%= render 'manual_form', court: params[:court], membership: membership %>
+                  <%end%>
                 </td>
               </tr>
             <% end %>
@@ -119,7 +121,7 @@
         <table class = "table table-dark table-striped">
           <thead>
             <tr>
-              <th class="col-2" style="color: #1d8454;">Expert</th>
+              <th class="col-2 align-middle" style="color: #1d8454;">Expert</th>
               <th class="col-1" style="color: #1d8454;">Select</th>
             </tr>
           </thead>
@@ -129,10 +131,9 @@
               <tr>
                 <td class="col-2"> <%= membership.user.name%>  </td>
                 <td class="col-1">
-                  <%= form_with(model: membership, local: true) do |form| %>
-                    <%= form.check_box :selected %>
-                    <%= form.hidden_field :club_id, value: params[:club_id] %>
-                  <% end %>
+                  <%=form_tag do%>
+                    <%= render 'manual_form', court: params[:court], membership: membership %>
+                  <%end%>
                 </td>
               </tr>
             <% end %>
@@ -141,7 +142,9 @@
       </div>
 
       <div class="modal-footer">
+      <%= link_to("Create", session_show_path(club: params[:club_id]), class: "btn btn-outline-success mb-1") %>
         <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: red; color: white;">Close</button>
+
         <!-- Add additional buttons or actions here -->
       </div>
     </div>

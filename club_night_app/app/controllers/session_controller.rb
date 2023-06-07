@@ -69,9 +69,6 @@ class SessionController < ApplicationController
       player.court = 0
       player.save
     end
-    @existing_players = Membership.where(club_id: params[:club_id], court: params[:court])
-    puts "CHECKKKKKKKKKK ===========> #{ @existing_players.map { |p| p.user.name }.join(', ') }"
-
   end
 
   def end_session
@@ -86,14 +83,12 @@ class SessionController < ApplicationController
   end
 
   def manual_toggle
-    puts "IN THE RIGHT METHOD"
     @membership = Membership.find(params[:membership][:id])
-    puts "PERSONNNNN #{@membership.user.name}"
     @membership.court = params[:membership][:court]
     @membership.waiting_to_play = false
-    puts "Courttttttt ========> #{@membership.court}"
-
     @membership.save
+    # @players_selected = Membership.where(club_id: @membership.club_id, court: params[:membership][:court]).count
+    # puts "============++++++++++ #{@players_selected}"
   end
 
 
