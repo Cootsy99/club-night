@@ -16,8 +16,12 @@ class SessionController < ApplicationController
   end
 
   def random
+    puts "RANDOM METHOD"
+    @existing_players = Membership.where(club_id: params[:club_id], court: params[:court])
     @random_players = Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true).order(Arel.sql('RANDOM()')).limit(4) 
+  
     @random_players.each do |player| 
+      puts " PLAYERRRRRRRR #{player.user.name}"
       player.waiting_to_play = false
       player.court = params[:court]
       player.save

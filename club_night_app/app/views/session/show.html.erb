@@ -26,8 +26,9 @@
             court: 1, club_id: @club.id, present: true)
             .each do |membership| %>
 
-            <div class="d-flex align-items-center justify-content-center">
-              <p><%= Membership.find(membership.id).user.name %></p>
+            <div class="d-flex align-items-center justify-content-center flex-column">
+              <p style="margin: 0;"><%= membership.user.name %></p>
+              <p style="font-style: italic; font-size: 12px;"><%= "(#{membership.level})" %></p>
             </div>
 
           <% end %>
@@ -58,8 +59,9 @@
             court: 2, club_id: @club.id, present: true)
             .each do |membership| %>
 
-            <div class="d-flex align-items-center justify-content-center">
-              <p><%= Membership.find(membership.id).user.name %></p>
+            <div class="d-flex align-items-center justify-content-center flex-column">
+              <p style="margin: 0;"><%= membership.user.name %></p>
+              <p style="font-style: italic; font-size: 12px;"><%= "(#{membership.level})" %></p>
             </div>
 
           <% end %>
@@ -91,8 +93,9 @@
             court: 3, club_id: @club.id, present: true)
             .each do |membership| %>
 
-            <div class="d-flex align-items-center justify-content-center">
-              <p><%= Membership.find(membership.id).user.name %></p>
+            <div class="d-flex align-items-center justify-content-center flex-column">
+              <p style="margin: 0;"><%= membership.user.name %></p>
+              <p style="font-style: italic; font-size: 12px;"><%= "(#{membership.level})" %></p>
             </div>
 
           <% end %>
@@ -118,15 +121,16 @@
 
       <h3>Court 4</h3>
 
-      <div class="court court2">
+      <div class="court">
 
 
           <% Membership.where(
             court: 4, club_id: @club.id, present: true)
             .each do |membership| %>
 
-            <div class="d-flex align-items-center justify-content-center">
-              <p><%= Membership.find(membership.id).user.name %></p>
+            <div class="d-flex align-items-center justify-content-center flex-column">
+              <p style="margin: 0;"><%= membership.user.name %></p>
+              <p style="font-style: italic; font-size: 12px;"><%= "(#{membership.level})" %></p>
             </div>
 
           <% end %>
