@@ -1,6 +1,6 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=IBM+Plex+Mono:wght@100&family=IBM+Plex+Sans:ital@1&family=Roboto&family=Sora&family=Yanone+Kaffeesatz:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Geologica:wght@500&family=IBM+Plex+Mono:wght@100&family=IBM+Plex+Sans:ital@1&family=Roboto&family=Sora&family=Yanone+Kaffeesatz:wght@500&display=swap");
 
 @font-face {
   font-family: "my_font";
@@ -19,7 +19,7 @@
 // Secondary Accent: #9CBBE9 (Light Blue)
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Geologica", sans-serif;
   background-color: #e0e9f0;
 }
 
@@ -61,4 +61,14 @@ body {
 .bold-label {
   font-size: large;
   color: #a5a5a5;
+}
+
+.subtle-link {
+  color: #999;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.subtle-link:hover {
+  color: #666;
 }
