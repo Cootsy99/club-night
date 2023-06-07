@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   post 'session/fixed_ability'
   get 'session/end_session'
   put 'session/create_match', to: "session#manual_toggle"
-
-
+  get 'admin_page', to: "memberships#index"
+  get 'admin_page/search', to: "memberships#search"
 
 
 

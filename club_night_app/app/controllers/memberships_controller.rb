@@ -58,6 +58,18 @@ class MembershipsController < ApplicationController
     end
   end
 
+  def search
+    puts "SEARCHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+    search_query = params[:search]
+    puts "search query is #{search_query}"
+    @clubs = Club.where("name LIKE ?", "%#{search_query}%")
+    @users = User.where("name LIKE ?", "%#{search_query}%")
+    if !@users.empty? || !@clubs.empty?
+      @memberships = Membership.where(user_id: @users.pluck(:id)).or(Membership.where(club_id: @clubs.pluck(:id)))
+    end
+    render :index
+  end
+
   private
     def set_membership
       if params[:id]
