@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'session/end_rest'
   post 'session/fixed_ability'
   get 'session/end_session'
+  put 'session/create_match', to: "session#manual_toggle"
 
 
 
