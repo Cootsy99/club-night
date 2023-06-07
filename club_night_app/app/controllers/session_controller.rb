@@ -70,6 +70,17 @@ class SessionController < ApplicationController
     end
   end
 
+  def end_session
+  @players_playing = Membership.where(club_id: params[:club_id]).where("court > ?", 0)
+  @players_playing.each do |player| 
+    player.waiting_to_play = true
+    player.court = 0
+    player.save
+  end
+  redirect_to club_path(params[:club_id])
+
+  end
+
 
 
   # def confirm_players

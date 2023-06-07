@@ -2,7 +2,7 @@
 
 <div class="d-flex justify-content-between align-items-center">
   <h1><%=@club.name %> - Session Started</h1>
-  <%= link_to("End Session", club_path(@club), class: "btn btn-danger mt-3") %>
+  <%= link_to("End Session", session_end_session_path(club_id: @club), class: "btn btn-danger mt-3") %>
 </div>
 
 <%= link_to("Toggle Players Present", session_players_path(club: @club), class: "btn btn-success mt-3 btn-thick-border") %>
@@ -21,7 +21,6 @@
 
       <div class="court court1">
 
-        <%# <div class="row"> %>
 
           <% Membership.where(
             court: 1, club_id: @club.id, present: true)
@@ -33,7 +32,6 @@
 
           <% end %>
 
-        <%# </div> %>
 
       </div>
 
@@ -157,13 +155,12 @@
 <br>
 
 
-      <%# <div class="card text-white bg-dark mb-3 border border-success" style="max-width: 40vw; border-width: 3px"> %>
 
 
 <div class="row">
   <div class="col-md-6">
     <div class="container players-waiting" style="border: 1px solid black; background-color: #f3ebe3;">
-      <h3>Players Waiting</h3>
+      <h3 class="mt-2">Players Waiting</h3>
       <ul class="list-group">
         <% Membership.where(waiting_to_play: true, club_id: @club.id, present: true).each do |membership| %>
           <li class="list-group-item text-white bg-dark" style="margin-bottom: 5px">
@@ -182,7 +179,7 @@
 
   <div class="col-md-6">
     <div class="container players-resting" style="border: 1px solid black; background-color: #f3ebe3;">
-      <h3>Players Resting</h3>
+      <h3 class="mt-2">Players Resting</h3>
       <ul class="list-group">
         <% Membership.where(resting: true, club_id: @club.id, present: true).each do |membership| %>
           <li class="list-group-item text-white bg-dark" style="margin-bottom: 5px">
