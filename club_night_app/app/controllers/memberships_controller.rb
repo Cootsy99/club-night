@@ -35,7 +35,7 @@ class MembershipsController < ApplicationController
     if @membership
       respond_to do |format|
         if @membership.update(membership_params)
-          format.html { redirect_to user_path(current_user), notice: "Membership was successfully updated." }
+          format.html { redirect_to edit_membership_path(@membership), notice: "Membership was successfully updated." }
           # format.json { render :show, status: :ok, location: @appointment }
         else
           format.html { render :edit, status: :unprocessable_entity }
