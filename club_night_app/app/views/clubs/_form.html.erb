@@ -1,23 +1,31 @@
 <%= form_for @club do |f| %>
-    <div class="field">
-        <%= f.label :name, "Name" %>
-        <%= f.text_field :name %>
+
+ <div class="bg-dark d-flex flex-column text-white justify-content-around align-items-center align-items-middle " style="width: 30vw; height: 40vh; border-radius: 20px">
+  <div>
+    <div class="m-3">
+      <%= f.label :name, style: "display: block" %>
+      <%= f.text_field :name %>
     </div>
 
-    <div class="field">
-        <%= f.label :founder, "Founder" %>
-        <%= f.text_field :founder %>
+    <div class="m-3">
+      <%= f.label :founder, style: "display: block" %>
+      <%= f.text_field :founder %>
     </div>
 
-    <div class="field">
-        <%= f.label :location, "Location" %>
-        <%= f.text_field :location %>
+    <div class="m-3">
+      <%= f.label :location, style: "display: block" %>
+      <%= f.text_field :location %>
     </div>
 
-    <div class="field">
-        <%= f.label :timetable, "Timetable" %>
-        <%= f.text_field :timetable %>
+    <div class="m-3">
+      <%= f.label :timetable, style: "display: block" %>
+      <%= f.text_field :timetable%>
     </div>
 
-    <%= f.submit "Submit", :class => "button" %>
+    <div class="form-group">
+      <%= f.submit "Save", class: "btn btn-success m-3" %>
+    </div>
+  </div>
+  </div>
+
 <% end %>
