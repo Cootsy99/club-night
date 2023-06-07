@@ -24,6 +24,7 @@
 
           <% Membership.where(
             court: 1, club_id: @club.id, present: true)
+            .order(updated_at: :asc)
             .each do |membership| %>
 
             <div class="d-flex align-items-center justify-content-center flex-column">
@@ -57,6 +58,7 @@
 
           <% Membership.where(
             court: 2, club_id: @club.id, present: true)
+            .order(updated_at: :asc)
             .each do |membership| %>
 
             <div class="d-flex align-items-center justify-content-center flex-column">
@@ -91,6 +93,7 @@
 
           <% Membership.where(
             court: 3, club_id: @club.id, present: true)
+            .order(updated_at: :asc)
             .each do |membership| %>
 
             <div class="d-flex align-items-center justify-content-center flex-column">
@@ -126,6 +129,7 @@
 
           <% Membership.where(
             court: 4, club_id: @club.id, present: true)
+            .order(updated_at: :asc)
             .each do |membership| %>
 
             <div class="d-flex align-items-center justify-content-center flex-column">
