@@ -19,14 +19,14 @@
         <p><span class="bold-label">Memberships: </span>  <%= @user.memberships.count %></p>
         
         <div class="d-flex justify-content-end">
-          <%= link_to("Edit Profile", edit_user_path(@user), class: "btn btn-info btn-sm", style: "margin-right: 5px;") %>
+          <%= link_to("Edit Profile", edit_user_path(@user), class: "btn btn-outline-info btn-sm", style: "margin-right: 5px;") %>
           <%= link_to("Delete My Profile", 
                       user_path(@user),
                       data: {
                               turbo_method: :delete, 
                               turbo_confirm: "Are you sure you want to delete?"
                             }, 
-                      class: "btn btn-danger btn-sm") %>
+                      class: "btn btn-outline-danger btn-sm") %>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
             </div>
 
             <div class="col-auto", style="margin-bottom: 16px;">
-              <%= link_to("View Club", club_path(m.club), class: "btn btn-success mt-3 mx-0") %>
+              <%= link_to("View Club", club_path(m.club), class: "btn btn-outline-success mt-3 mx-0") %>
             </div>
 
           </div>
@@ -73,17 +73,17 @@
           <p><span class="bold-label">My Level:</span> <%= m.level %></p>
           <p>
             <span class="bold-label">Members:</span> <%= m.club.users.count %>
-            <%= link_to "View Members", members_path(club_id: m.club.id, club_name: m.club.name), class: "btn btn-info btn-sm",  style: "margin-left: 15px;" %>
+            <%= link_to "View Members", members_path(club_id: m.club.id, club_name: m.club.name), class: "btn btn-outline-info btn-sm",  style: "margin-left: 15px;" %>
           </p>
 
           <div class="d-flex justify-content-end">
-            <%= link_to("Edit Membership", edit_membership_path(m), class: "btn btn-info btn-sm", style: "margin-right: 5px;") %>
+            <%= link_to("Edit Membership", edit_membership_path(m, club_id: m.club.id, club_name: m.club.name), class: "btn btn-outline-info btn-sm", style: "margin-right: 5px;") %>
             <%= link_to("Delete Membership", membership_path(m), 
                         data: {
                                 turbo_method: :delete, 
                                 turbo_confirm: "Are you sure you want to delete?"
                               }, 
-                        class: "btn btn-danger btn-sm") %>
+                        class: "btn btn-outline-danger btn-sm") %>
           </div>
 
         </div>
@@ -92,7 +92,6 @@
     </div>
   <% end %>
 </div>
-
 
 
    

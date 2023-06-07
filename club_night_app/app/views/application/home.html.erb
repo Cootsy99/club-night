@@ -20,7 +20,7 @@ have lots of options to ensure a fun and varied experience for all.
     <h2>Clubs you are part of:</h2>
   </div>
   <div class="col-auto">
-    <%= link_to("Find new club", find_new_club_path, class: "btn btn-info mt-3") %>
+    <%= link_to("Find new club", find_new_club_path, class: "btn btn-success mt-3") %>
   </div>
 </div>
 <br>
@@ -35,7 +35,7 @@ have lots of options to ensure a fun and varied experience for all.
             <%= m.club.name %>
             </div>
             <div class="col-auto", style="margin-bottom: 16px;">
-              <%= link_to("View Club", club_path(m.club), class: "btn btn-success mt-3 mx-0") %>
+              <%= link_to("View Club", club_path(m.club), class: "btn btn-outline-success mt-3 mx-0") %>
             </div>
             </div>
         </div>
@@ -55,7 +55,7 @@ have lots of options to ensure a fun and varied experience for all.
           <p style="list-style-type: none">
             <span class="bold-label">Members:</span> <%= m.club.users.count %>
 
-            <%= link_to "View Members", members_path(club_id: m.club.id, club_name: m.club.name), class: "btn btn-info btn-sm",  style: "margin-left: 15px;" %>
+            <%= link_to "View Members", members_path(club_id: m.club.id, club_name: m.club.name), class: "btn btn-outline-info btn-sm",  style: "margin-left: 15px;" %>
           </p>
         </div>
 

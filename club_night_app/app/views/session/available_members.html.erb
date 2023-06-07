@@ -1,5 +1,8 @@
-<h1>Players</h1>
+
 <h3>Toggle players who are present</h3>
+
+
+
 <%@club.users.each_slice(3) do |memberships|%>
     <div class="row">
         <% memberships.each do |u| %>
@@ -14,7 +17,7 @@
 <%end%>
 
 
-<%= link_to("Back to Session", session_show_path(club: @club), class: "btn btn-primary mt-3") %>
+<%= link_to("Back to Session", session_show_path(club: @club), class: "btn btn-success mt-3") %>
 <%# update_membership_path(membership.id) %>
 
 <%# Manually add the url/path to the form to submit the POST request  %>

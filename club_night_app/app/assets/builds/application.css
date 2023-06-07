@@ -19746,11 +19746,20 @@ body {
 }
 
 .subtle-link {
-  color: #999;
+  color: #1d8454;
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .subtle-link:hover {
   color: #666;
+}
+
+.btn-thick-border {
+  border: 2px solid black;
+}
+
+.toggle-switch:checked + .form-check-label::before {
+  background-color: green;
+  border-color: green;
 }

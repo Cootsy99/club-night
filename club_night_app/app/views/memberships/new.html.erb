@@ -5,5 +5,11 @@
 <br>
 
 <div>
-  <%= link_to "My Profile", user_path(current_user) %>
+  <%= link_to("Back to My Profile", user_path(current_user), class: "btn btn-info") %>
+</div>
+<br>
+<br>
+
+<div>
+  <%= link_to("Back to #{params[:club_name]}", club_path(params[:club_id]), class: "btn btn-info") %>
 </div>

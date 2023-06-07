@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @club.name %></h1>
-  <%= link_to("All Clubs", find_new_club_path, class: "btn btn-primary mt-3") %>
-  <%= link_to("Join #{@club.name}", new_membership_path(club_id: @club.id, club_name: @club.name), class: "btn btn-primary mt-3") %>
+  <%= link_to("All Clubs", find_new_club_path, class: "btn btn-success mt-3") %>
+  <%= link_to("Join #{@club.name}", new_membership_path(club_id: @club.id, club_name: @club.name), class: "btn btn-success mt-3") %>
 
 
 
@@ -29,7 +29,7 @@
       <div class="card text-white bg-dark text-center">
         <div class="card-header"><h5 class="card-title">Timetable</h5></div>
         <div class="card-body text-center">
-          <p class="card-text"><%= @club.timetable %></p>
+          <p class="card-text" style="margin-bottom: 10px;"><%= @club.timetable %></p>
         </div>
       </div>
     </div>
@@ -38,7 +38,9 @@
         <div class="card-header"><h5 class="card-title">Members</h5></div>
 
         <div class="card-body text-center">
-          <p class="card-text"><%= link_to pluralize(@club.users.count, "Member"), members_path(club_id: @club.id, club_name: @club.name) %></p>
+
+            <span class="bold-label"><%=pluralize(@club.users.count, "Member")%></span> 
+            <%= link_to "View Members", members_path(club_id: @club.id, club_name: @club.name), class: "btn btn-outline-info btn-sm",  style: "margin-left: 15px;" %>
         </div>
       </div>
     </div>
@@ -46,7 +48,7 @@
 </div>
 
 
-  <%= link_to("Start Session", session_show_path(club: @club), class: "btn btn-primary mt-3") %>
+  <%= link_to("Start Session", session_show_path(club: @club), class: "btn btn-warning mt-3") %>
 
 
 

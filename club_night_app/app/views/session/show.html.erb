@@ -1,17 +1,15 @@
 <%= javascript_include_tag 'session' %>
 
-<h1><%=@club.name %> - Session Started</h1>
+<div class="d-flex justify-content-between align-items-center">
+  <h1><%=@club.name %> - Session Started</h1>
+  <%= link_to("End Session", club_path(@club), class: "btn btn-danger mt-3") %>
+</div>
+
+<%= link_to("Toggle Players Present", session_players_path(club: @club), class: "btn btn-success mt-3 btn-thick-border") %>
 
 <br>
-
-<%= link_to("End Session", club_path(@club), class: "btn btn-danger mt-3") %>
-
-
 <br>
 
-<%= link_to("Players", session_players_path(club: @club), class: "btn btn-primary mt-3") %>
-
-<br>
 
 <div class="container">
 
@@ -39,7 +37,7 @@
 
       </div>
 
-      <%= link_to("Create Match", session_create_match_path(court: 1, club_id: @club), class: "btn btn-success mt-3") %>
+      <%= link_to("Create Match", session_create_match_path(court: 1, club_id: @club), class: "btn btn-outline-success mt-3") %>
 
       <br>
       <br>
@@ -47,7 +45,7 @@
       <%= form_tag(
         { controller: "session", action: "end_game", club_id: @club.id, court: 1},
          method: :post) do %>
-          <%= submit_tag "End Match", class: "btn btn-danger end1" %>
+          <%= submit_tag "End Match", class: "btn btn-outline-danger end1" %>
         <% end %>
 
     </div>
@@ -70,7 +68,7 @@
 
       </div>
 
-      <%= link_to("Create Match", session_create_match_path(court: 2, club_id: @club), class: "btn btn-success mt-3") %>
+      <%= link_to("Create Match", session_create_match_path(court: 2, club_id: @club), class: "btn btn-outline-success mt-3") %>
 
       <br>
       <br>
@@ -78,7 +76,7 @@
       <%= form_tag(
         { controller: "session", action: "end_game", club_id: @club.id, court: 2},
          method: :post) do %>
-          <%= submit_tag "End Match", class: "btn btn-danger" %>
+          <%= submit_tag "End Match", class: "btn btn-outline-danger" %>
         <% end %>
 
     </div>
@@ -105,7 +103,7 @@
 
       </div>
 
-      <%= link_to("Create Match", session_create_match_path(court: 3, club_id: @club), class: "btn btn-success mt-3") %>
+      <%= link_to("Create Match", session_create_match_path(court: 3, club_id: @club), class: "btn btn-outline-success mt-3") %>
       
       <br>
       <br>
@@ -113,7 +111,7 @@
       <%= form_tag(
         { controller: "session", action: "end_game", club_id: @club.id, court: 3},
          method: :post) do %>
-          <%= submit_tag "End Match", class: "btn btn-danger" %>
+          <%= submit_tag "End Match", class: "btn btn-outline-danger" %>
         <% end %>
 
     </div>
@@ -138,7 +136,7 @@
 
       </div>
 
-      <%= link_to("Create Match", session_create_match_path(court: 4, club_id: @club), class: "btn btn-success mt-3") %>
+      <%= link_to("Create Match", session_create_match_path(court: 4, club_id: @club), class: "btn btn-outline-success mt-3") %>
       
       <br>
       <br>
@@ -146,7 +144,7 @@
       <%= form_tag(
         { controller: "session", action: "end_game", club_id: @club.id, court: 4},
          method: :post) do %>
-          <%= submit_tag "End Match", class: "btn btn-danger" %>
+          <%= submit_tag "End Match", class: "btn btn-outline-danger" %>
         <% end %>
 
     </div>
@@ -158,14 +156,18 @@
 <br>
 <br>
 
+
+      <%# <div class="card text-white bg-dark mb-3 border border-success" style="max-width: 40vw; border-width: 3px"> %>
+
+
 <div class="row">
   <div class="col-md-6">
-    <div class="container players-waiting" style="border: 1px solid black;">
+    <div class="container players-waiting" style="border: 1px solid black; background-color: #f3ebe3;">
       <h3>Players Waiting</h3>
       <ul class="list-group">
         <% Membership.where(waiting_to_play: true, club_id: @club.id, present: true).each do |membership| %>
-          <li class="list-group-item" style="margin-bottom: 5px">
-            <div class="d-flex align-items-center align-items-middle justify-content-between">
+          <li class="list-group-item text-white bg-dark" style="margin-bottom: 5px">
+            <div class="d-flex align-items-center align-items-middle justify-content-between ">
               <p style= "margin: 0">
               <%= membership.user.name %>
               <span class="text-muted"> <%= " - #{membership.level}" %></span>
@@ -179,11 +181,11 @@
   </div>
 
   <div class="col-md-6">
-    <div class="container players-resting" style="border: 1px solid black;">
+    <div class="container players-resting" style="border: 1px solid black; background-color: #f3ebe3;">
       <h3>Players Resting</h3>
       <ul class="list-group">
         <% Membership.where(resting: true, club_id: @club.id, present: true).each do |membership| %>
-          <li class="list-group-item" style="margin-bottom: 5px">
+          <li class="list-group-item text-white bg-dark" style="margin-bottom: 5px">
              <div class="d-flex align-items-center align-items-middle justify-content-between">
               <p style= "margin: 0">
               <%= membership.user.name %>
