@@ -9,6 +9,9 @@
         <div class="card text-center text-white bg-dark" style="margin: 10px">
           <div class="card-body">
             <p class="card-title" style="margin: 0; font-size: 20px;">
+              <%if m.admin%>
+                <span style="color: #198754;"><%= " Admin - " %></span>
+              <%end%>
               <%= m.user.name %>
               <span class="" style="font-style: italic; color: gray; font-size: 15px;"> <%= " - #{m.level}" %></span>
             </p>

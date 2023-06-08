@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="bg-dark d-flex flex-column text-white justify-content-around align-items-center align-items-middle " style="width: 30vw; height: 40vh; border-radius: 20px">
+  <div class="bg-dark d-flex flex-column text-white justify-content-around align-items-center align-items-middle " style="width: 30vw; border-radius: 20px">
   <div>
     
     <div class="m-3">
@@ -19,15 +19,19 @@
     </div>
 
     <div class="m-3">
-      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :user_id, value: membership.user_id %>
     </div>
 
     <% if @is_admin %>
     <div class="m-3">
       <%= form.label :admin, style: "display: block" %>
-      <%= form.select :level, [true, false] %>
+      <%= form.check_box :admin, checked: membership.admin?%>
     </div> 
-    <%end%>
+    <%else%>
+      <div class="m-3">
+        <%= form.hidden_field :admin, value: false%>
+      </div>
+    <%end %>
 
     <div class="m-3">
       <%= form.label :level, style: "display: block" %>

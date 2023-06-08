@@ -502,8 +502,7 @@ levels = ['Beginner', 'Intermediate', 'Expert']
 membership_types = ['PAYG', 'Annual', 'Monthly']
 
 user_ids.each do |user_id|
-#   clubs_sample = club_ids.to_a.sample(5) # Select 5 random club IDs for each user
-  clubs_sample = club_ids.to_a.sample(15) # Select 5 random club IDs for each user
+  clubs_sample = club_ids.to_a.sample(15) 
 
 
   clubs_sample.each do |club_id|
@@ -515,17 +514,30 @@ user_ids.each do |user_id|
       club_id: club_id,
       user_id: user_id,
       level: level,
+      admin: false,
       membership_type: membership_type,
       membership_expiry: membership_expiry
     })
   end
 end
 
-# Membership.create({
-#           club_id: 1,
-#           user_id: 1,
-#           admin: true,
-#           level: "beginner",
-#           membership_type: "annual",
-#           membership_expiry: Date.today
-#         })
+me = {
+  email: "jackcoots1234@gmail.com",
+  name: "Jack Coots",
+  about: "My name is Jack and I like pickleball",
+  password: "0123456789"
+}
+
+User.create(me)
+
+club_ids.each do |club_id|
+  Membership.create({
+    club_id: club_id,
+    user_id: 50,
+    level: "Intermediate",
+    admin: true,
+    membership_type: "PAYG",
+    membership_expiry: Date.today + 1000.days
+  })
+end
+

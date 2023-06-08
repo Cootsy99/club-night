@@ -11,20 +11,30 @@
     </div>
   <% end %>
 
-  <div class="bg-dark d-flex flex-column text-white justify-content-around align-items-center align-items-middle " style="width: 30vw; height: 40vh; border-radius: 20px">
+  <div class="bg-dark d-flex flex-column text-white justify-content-around align-items-center align-items-middle " style="width: 30vw; border-radius: 20px">
   <div>
     <div class="m-3">
-      <%= form.label :club_id, style: "display: block" %>
-      <%= form.select :club_id, Club.all.collect {|c| [c.name, c.id]}, selected: [params[:club_name], params[:club_id]] %>
+      <label style="display: block">Club:</label>
+      <span><%= params[:club_name] %></span>
+      <%= form.hidden_field :club_id, value: params[:club_id] %>
     </div>
 
     <div class="m-3">
       <%= form.hidden_field :user_id, value: current_user.id %>
     </div>
 
-    <div class="m-3">
-      <%= form.hidden_field :admin, value: true %>
-    </div>
+
+    <%if @club_memberships == 0 %>
+      <div class="m-3">
+        <%= form.label :admin %>
+        <%= form.hidden_field :admin, value: true %>
+        <%= form.check_box :admin, checked: true, disabled: true %> 
+    </div> 
+    <%else%>
+      <div class="m-3">
+        <%= form.hidden_field :admin, value: false%>
+      </div>
+    <%end %>
 
     <div class="m-3">
       <%= form.label :level, style: "display: block" %>

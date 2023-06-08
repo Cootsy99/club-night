@@ -1,4 +1,4 @@
-<h1>Editing membership for <%= @club_name %></h1>
+<h1>Editing membership for <%=@membership.user.name%> - <%= @club_name %></h1>
 
 <%= render "edit_form", membership: @membership %>
 

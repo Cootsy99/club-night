@@ -3,7 +3,8 @@ class MembershipsController < ApplicationController
     before_action :set_membership, only: %i[ show edit update destroy ]
 
   def index
-    @memberships = Membership.all
+    @admin_clubs = Membership.where(user_id: current_user.id, admin: true).pluck(:club_id)
+    @memberships = Membership.where(club_id: @admin_clubs)
   end
 
   def show
@@ -11,6 +12,8 @@ class MembershipsController < ApplicationController
 
   def new
     @membership = Membership.new
+    @club = Club.find(params[:club_id])
+    @club_memberships = @club.memberships.count
   end
 
   def edit
@@ -19,6 +22,8 @@ class MembershipsController < ApplicationController
     user_membership = Membership.where(user_id: current_user.id, club_id: @club_id).limit(1)
     if user_membership.exists?
       @is_admin = user_membership[0].admin
+    else
+      @is_admin = false
     end
   end
 
@@ -37,13 +42,14 @@ class MembershipsController < ApplicationController
   end
 
   def update
+    puts("UPDATED")
     if @membership
       respond_to do |format|
         if @membership.update(membership_params)
           format.html { redirect_to edit_membership_path(@membership), notice: "Membership was successfully updated." }
           # format.json { render :show, status: :ok, location: @appointment }
         else
-          format.html { redirect_to edit_membership_path(@membership, club_id: params[:club_id], club_name: params[:club_name]), status: :unprocessable_entity }
+          format.html { render :edit, status: :unprocessable_entity }
           # format.json { render json: @appointment.errors, status: :unprocessable_entity }
         end
       end
@@ -53,6 +59,7 @@ class MembershipsController < ApplicationController
       head :no_content
     end
   end
+
 
   def destroy
     @membership.destroy
@@ -64,11 +71,16 @@ class MembershipsController < ApplicationController
   end
 
   def search
+    @admin_clubs = Membership.where(user_id: current_user.id, admin: true).pluck(:club_id)
+    # @memberships = Membership.where(club_id: @admin_clubs)
+
     search_query = params[:search]
-    @clubs = Club.where("name ILIKE ?", "%#{search_query}%")
-    @users = User.where("name ILIKE ?", "%#{search_query}%")
+    @clubs= Club.where("name ILIKE ?", "%#{search_query}%").pluck(:id)
+    @users = User.where("name ILIKE ?", "%#{search_query}%").pluck(:id)
+
+
     if !@users.empty? || !@clubs.empty?
-      @memberships = Membership.where(user_id: @users.pluck(:id)).or(Membership.where(club_id: @clubs.pluck(:id)))
+      @memberships = Membership.where(user_id: @users, club_id: @admin_clubs).or(Membership.where(club_id: @clubs & @admin_clubs))
     end
     render :index
   end

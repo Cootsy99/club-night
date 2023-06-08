@@ -3,20 +3,32 @@
 
 <div class="d-flex justify-content-between align-items-center">
   <% if @is_a_member%>
-    <h1><%= @club.name %><span style="font-style: italic;">- you are a member</span></h1>
+  <div>
+  <h1><%= @club.name %></h1>
+  <p><span style="font-style: italic; font-size: 120%;">you are a member 
+    <% if @is_admin%>
+       and an admin</span></p>
+    <%else%>
+    </span></p>
+    <%end%>
+</div>
+
   <%else%>
-    <h1><%= @club.name %> - <%= link_to("Join #{@club.name}", new_membership_path(club_id: @club.id, club_name: @club.name), class: "btn btn-success") %></h1>
+    <h1><%= @club.name %> <br><%= link_to("Join #{@club.name}", new_membership_path(club_id: @club.id, club_name: @club.name), class: "btn btn-success") %></h1>
   <%end%>
 
-  <div>
-    <%= link_to("Edit #{@club.name}", edit_club_path(@club), class: "btn btn-outline-info btn-sm") %>
-    <%= link_to("Delete #{@club.name}", club_path(@club), data: {
+  <% if @is_admin%>
+  <div class="d-flex justify-content-end">
+    <%= link_to("Edit Club", edit_club_path(@club), class: "btn btn-outline-info btn-sm m-2") %>
+    <%= link_to("Delete Club", club_path(@club), data: {
                                 turbo_method: :delete, 
                                 turbo_confirm: "Are you sure you want to delete?"
                               }, 
-                        class: "btn btn-outline-danger btn-sm") %>
+                        class: "btn btn-outline-danger btn-sm m-2") %>
 
   </div>
+  <%end%>
+
 </div>
   
 
@@ -67,7 +79,7 @@
 <div class="d-flex justify-content-between align-items-center">
   <%= link_to("Back to All Clubs", find_new_club_path, class: "btn btn-info mt-3") %>
 
-  <% if @is_a_member%>
+  <% if @is_admin%>
     <%= link_to("Start Session", session_show_path(club: @club), class: "btn btn-warning mt-3") %>
   <%end%>
 </div>

@@ -1,5 +1,10 @@
-<h1>New Membership</h1>
+<h1>New Membership for <%=params[:club_name]%> </h1>
 
+<%if @club_memberships == 0 %>
+<div>
+<p>🙌 You are the club's first member and therefore an admin 🙌</p>
+</div>
+<%end%>
 <%= render "form", membership: @membership %>
 
 <br>
@@ -10,6 +15,6 @@
 <br>
 <br>
 
-<div>
+<%# <div>
   <%= link_to("Back to #{params[:club_name]}", club_path(params[:club_id]), class: "btn btn-info") %>
-</div>
+<%# </div> %> 

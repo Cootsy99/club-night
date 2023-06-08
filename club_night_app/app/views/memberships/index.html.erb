@@ -35,7 +35,7 @@
               
 
               <div class="d-flex justify-content-end">
-                <%= link_to("Edit Membership", edit_membership_path(m, club_id: m.club.id, club_name: m.club.name), class: "btn btn-outline-info btn-sm", style: "margin-right: 5px;") %>
+                <%= link_to("Edit Membership", edit_membership_path(m), class: "btn btn-outline-info btn-sm", style: "margin-right: 5px;") %>
                 <%= link_to("Delete Membership", 
                             membership_path(m), 
                             data: {

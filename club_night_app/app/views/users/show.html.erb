@@ -57,6 +57,9 @@
 
             <div class="col font-weight-bold" style="font-size: 20px;">
               <%= m.club.name %>
+              <%if m.admin%>
+              <span style="color: #198754;"><%= " - Admin" %></span>
+              <%end%>
             </div>
 
             <div class="col-auto", style="margin-bottom: 16px;">

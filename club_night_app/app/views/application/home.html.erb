@@ -3,15 +3,22 @@
 <br>
 
 <p>
-'Club Night' is an app designed to make running a sports club night for organisers really simple and make the session really good fun for all club members. 
+Introducing 'Club Night' - the ultimate app revolutionizing sports club nights for organizers and members alike!
 <br>
 <br>
-Each club owner will pay a small fee to subscribe to the application and they will create their club and become the default admin. Members 
-of the club can then join the site fore free, create an account and then join their sports clubs. 
+Experience the simplicity of running a sports club night like never before. With 'Club Night', organizers can unlock a world of excitement and ensure an unforgettable session for every club member.
 <br>
 <br>
-Club owners can then start a club night 'session' where they will be able to toggle members as present. The app can then be used throughout the session to generate matches. The match generation will 
-have lots of options to ensure a fun and varied experience for all.
+Step into the action by subscribing to our app for a nominal fee. As a club owner, you'll take center stage as the default admin, effortlessly creating and managing your club. But the real magic happens when club members join the fun, completely free of charge!
+<br>
+<br>
+Prepare for a thrilling ride as club owners ignite the atmosphere with our exclusive 'Club Night' sessions. Seamlessly toggle members as present, unleashing the full potential of our app throughout the session. Get ready for the match generation feature, offering an abundance of options to guarantee a dynamic, diverse, and endlessly entertaining experience for everyone involved.
+<br>
+<br>
+With 'Club Night', sports enthusiasts will revel in the joy of camaraderie, intense matches, and endless fun. Embrace the power of our app and witness the transformation of your sports club nights into extraordinary events that leave a lasting impression on every participant.
+<br>
+<br>
+Join 'Club Night' today and let the adventure begin!
 </p>
 <br>
 
@@ -33,6 +40,9 @@ have lots of options to ensure a fun and varied experience for all.
           <div class="row align-items-center"> 
             <div class="col font-weight-bold" style="font-size: 20px;">
             <%= m.club.name %>
+            <%if m.admin%>
+              <span style="color: #198754;"><%= " - Admin" %></span>
+              <%end%>
             </div>
             <div class="col-auto", style="margin-bottom: 16px;">
               <%= link_to("View Club", club_path(m.club), class: "btn btn-outline-success mt-3 mx-0") %>
