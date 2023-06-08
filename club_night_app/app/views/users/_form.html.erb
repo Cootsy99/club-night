@@ -1,18 +1,24 @@
 <%= form_for @user do |f| %>
-    <div class="field">
+
+  <div class="bg-dark d-flex flex-column text-white justify-content-around align-items-center align-items-middle " style="width: 30vw; border-radius: 20px">
+
+    <div class="m-3">
         <%= f.label :name, "Name" %>
         <%= f.text_field :name %>
     </div>
 
-    <div class="field">
+    <div class="m-3">
         <%= f.label :email, "Email" %>
         <%= f.text_field :email %>
     </div>
 
-    <div class="field">
+    <div class="m-3">
         <%= f.label :About, "About" %>
         <%= f.text_field :about %>
     </div>
 
-    <%= f.submit "Submit", :class => "button" %>
+<div class="form-group">
+    <%= f.submit "Save", class: "btn btn-success m-3" %>
+    </div>
+    </div>
 <% end %>

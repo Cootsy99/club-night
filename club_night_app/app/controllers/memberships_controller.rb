@@ -39,13 +39,13 @@ class MembershipsController < ApplicationController
       if @proper_password == @entered_passsword
         if @membership.save
           format.html { redirect_to user_path(current_user), notice: "Membership was successfully created." }
-          # format.json { render :show, status: :created, location: @appointment }
         else
           format.html { render :new, status: :unprocessable_entity }
-          # format.json { render json: @appointment.errors, status: :unprocessable_entity }
         end
       else
-        format.html { redirect_to club_path(params[:membership][:club_id]), notice: "Password was not correct" }
+        format.html { flash[:error] = "Password was not correct"; redirect_to request.referrer}
+
+        # format.html { redirect_to club_path(params[:membership][:club_id]), flash.alert: "Password was not correct"}
       end
     end
   end
@@ -55,7 +55,7 @@ class MembershipsController < ApplicationController
     if @membership
       respond_to do |format|
         if @membership.update(membership_params)
-          format.html { redirect_to edit_membership_path(@membership), notice: "Membership was successfully updated." }
+          format.html { flash[:success] = "Membership successfully updated"; redirect_to request.referrer}
           # format.json { render :show, status: :ok, location: @appointment }
         else
           format.html { render :edit, status: :unprocessable_entity }

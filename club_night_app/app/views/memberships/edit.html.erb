@@ -1,3 +1,10 @@
+<% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+
 <h1>Editing membership for <%=@membership.user.name%> - <%= @club_name %></h1>
 
 <%= render "edit_form", membership: @membership %>
