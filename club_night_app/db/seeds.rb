@@ -514,7 +514,6 @@ user_ids.each do |user_id|
     Membership.create({
       club_id: club_id,
       user_id: user_id,
-      admin: true,
       level: level,
       membership_type: membership_type,
       membership_expiry: membership_expiry

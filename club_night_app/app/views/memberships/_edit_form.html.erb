@@ -22,10 +22,12 @@
       <%= form.hidden_field :user_id, value: current_user.id %>
     </div>
 
-    
-    <%# <div class="m-3">
-      <%= form.hidden_field :admin, value: true %>
-    <%# </div> %> 
+    <% if @is_admin %>
+    <div class="m-3">
+      <%= form.label :admin, style: "display: block" %>
+      <%= form.select :level, [true, false] %>
+    </div> 
+    <%end%>
 
     <div class="m-3">
       <%= form.label :level, style: "display: block" %>
