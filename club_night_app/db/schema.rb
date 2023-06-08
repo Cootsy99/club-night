@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_08_102125) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_08_141132) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "club_passwords", force: :cascade do |t|
+    t.string "password"
+    t.bigint "club_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_club_passwords_on_club_id"
+  end
 
   create_table "clubs", force: :cascade do |t|
     t.string "founder"
@@ -54,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_102125) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "club_passwords", "clubs"
   add_foreign_key "memberships", "clubs"
   add_foreign_key "memberships", "users"
 end
