@@ -51,6 +51,11 @@
       <%= form.date_field :membership_expiry %>
     </div>
 
+    <div class="m-3">
+      <%= form.label :club_password, style: "display: block" %>
+      <%= form.password_field :club_password %>
+    </div>
+
     <div class="form-group">
       <%= form.submit "Save", class: "btn btn-success m-3" %>
     </div>

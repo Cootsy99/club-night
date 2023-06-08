@@ -29,14 +29,23 @@ class MembershipsController < ApplicationController
 
   def create
     @membership = Membership.new(membership_params)
+    @proper_password = Club.find(params[:membership][:club_id]).password
+    puts "PROPER PASSWORD: #{@proper_password}"
+    @membership.club_password = params[:membership][:club_password]
+    @entered_passsword = @membership.club_password
+
 
     respond_to do |format|
-      if @membership.save
-        format.html { redirect_to user_path(current_user), notice: "Membership was successfully created." }
-        # format.json { render :show, status: :created, location: @appointment }
+      if @proper_password == @entered_passsword
+        if @membership.save
+          format.html { redirect_to user_path(current_user), notice: "Membership was successfully created." }
+          # format.json { render :show, status: :created, location: @appointment }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          # format.json { render json: @appointment.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        # format.json { render json: @appointment.errors, status: :unprocessable_entity }
+        format.html { redirect_to club_path(params[:membership][:club_id]), notice: "Password was not correct" }
       end
     end
   end
@@ -93,6 +102,6 @@ class MembershipsController < ApplicationController
     end
 
     def membership_params
-      params.require(:membership).permit(:club_id, :user_id, :admin, :level, :present, :membership_type, :membership_expiry)
+      params.require(:membership).permit(:club_id, :user_id, :admin, :level, :present, :membership_type, :membership_expiry, :club_password)
     end
 end
