@@ -1,0 +1,2 @@
+module ClubPasswordsHelper
+end

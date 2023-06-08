@@ -1,4 +1,6 @@
 class SessionController < ApplicationController
+  before_action :authenticate_user!  
+
   def show
     @club = Club.find(params[:club])
     @members = params[:members]

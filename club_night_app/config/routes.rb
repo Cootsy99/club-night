@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'club_passwords/new'
+  post 'club_passwords/create'
+  get 'club_passwords/edit'
+  put 'club_passwords/update'
   get 'session/show', to: "session#show"
   get 'session/create_match', to: "session#create_match"
   post 'session/random'
