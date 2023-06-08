@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_08_141132) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_08_144513) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_141132) do
     t.string "timetable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password", default: "password"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -44,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_141132) do
     t.boolean "waiting_to_play", default: true
     t.integer "court", default: 0
     t.boolean "resting", default: false
+    t.string "password", default: "password"
     t.index ["club_id"], name: "index_memberships_on_club_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
