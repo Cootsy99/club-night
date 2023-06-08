@@ -15,16 +15,17 @@
   <div>
     
     <div class="m-3">
-      <%= form.hidden_field :club_id, value: params[:club_id] %>
+      <%= form.hidden_field :club_id, value: @club_id %>
     </div>
 
     <div class="m-3">
       <%= form.hidden_field :user_id, value: current_user.id %>
     </div>
 
-    <div class="m-3">
+    
+    <%# <div class="m-3">
       <%= form.hidden_field :admin, value: true %>
-    </div>
+    <%# </div> %> 
 
     <div class="m-3">
       <%= form.label :level, style: "display: block" %>

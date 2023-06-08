@@ -14,6 +14,12 @@ class MembershipsController < ApplicationController
   end
 
   def edit
+    @club_id = @membership.club_id
+    @club_name = Club.find(@club_id).name
+    user_membership = Membership.where(user_id: current_user.id, club_id: @club_id).limit(1)
+    if user_membership.exists?
+      @is_admin = user_membership[0].admin
+    end
   end
 
   def create
@@ -31,14 +37,13 @@ class MembershipsController < ApplicationController
   end
 
   def update
-    puts("UPDATED")
     if @membership
       respond_to do |format|
         if @membership.update(membership_params)
           format.html { redirect_to edit_membership_path(@membership), notice: "Membership was successfully updated." }
           # format.json { render :show, status: :ok, location: @appointment }
         else
-          format.html { render :edit, status: :unprocessable_entity }
+          format.html { redirect_to edit_membership_path(@membership, club_id: params[:club_id], club_name: params[:club_name]), status: :unprocessable_entity }
           # format.json { render json: @appointment.errors, status: :unprocessable_entity }
         end
       end
