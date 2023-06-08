@@ -81,3 +81,9 @@ body {
   background-color: green;
   border-color: green;
 }
+
+.login_form_container,
+.signup_form_container {
+  width: 50vw;
+  border-radius: 10px;
+}

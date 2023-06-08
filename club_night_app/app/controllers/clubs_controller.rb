@@ -11,6 +11,9 @@ class ClubsController < ApplicationController
     end
 
     def show
+        @is_a_member = !Membership.where(user_id: current_user.id, club_id: @club.id).empty?
+
+        puts "IS HE A MEMBER #{@is_a_member}"
     end
     
     def new
