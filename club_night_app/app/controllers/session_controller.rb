@@ -12,8 +12,9 @@ class SessionController < ApplicationController
 
   def update_attendance
     @membership = Membership.find(params[:membership])
+    puts "PASSWORD: #{@membership.password}"
     @membership.present = params[:present] || false
-    puts @membership.present
+    @membership.club_password = "password"
     @membership.save
   end
 

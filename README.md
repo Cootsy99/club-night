@@ -2,14 +2,13 @@
 
 ## Overview
 
-'Club Night' is an app designed to make running a sports club night for organisers really simple and make the session really good fun for all club members.
+'Club Night' is an app designed to make club nights for sport clubs really simple for organisers and good fun for all club members.
 
-The idea is that club chairpeople will pay a small fee to subscribe to the application and they will create their club and become the default admin. Members
+The idea is that club chairperson will pay a small fee to subscribe to the application and they will create their club and become the default admin. Members
 of the club can then join the site fore free, create an account and then join their sports clubs. In the most basic form of the app, it will only support a pickleball
 club that has 4 courts and plays doubles but the ambition of the application is to increase the flexibility on that.
 
-All members will also be 'pro subscribers' by default in the basic form of the app.
-Clubs will be able to toggle people as present for a club night and will use the app throughout the session to generate matches. The match generation will
+Club admins will be able to start a session and toggle members as present for a club night and will use the app throughout the session to generate matches. The match generation will
 be simple in the basic form of the app with ambitions to increase the functionality.
 
 This idea has been inspired by personal experiences where organising consistently good quality club night matches is challenging.
