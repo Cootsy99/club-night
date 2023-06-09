@@ -44,8 +44,6 @@ class MembershipsController < ApplicationController
         end
       else
         format.html { flash[:error] = "Password was not correct"; redirect_to request.referrer}
-
-        # format.html { redirect_to club_path(params[:membership][:club_id]), flash.alert: "Password was not correct"}
       end
     end
   end
@@ -56,15 +54,11 @@ class MembershipsController < ApplicationController
       respond_to do |format|
         if @membership.update(membership_params)
           format.html { flash[:success] = "Membership successfully updated"; redirect_to request.referrer}
-          # format.json { render :show, status: :ok, location: @appointment }
         else
           format.html { render :edit, status: :unprocessable_entity }
-          # format.json { render json: @appointment.errors, status: :unprocessable_entity }
         end
       end
     else
-      # render json: {status: @membership.present}
-      # render 
       head :no_content
     end
   end
@@ -81,7 +75,6 @@ class MembershipsController < ApplicationController
 
   def search
     @admin_clubs = Membership.where(user_id: current_user.id, admin: true).pluck(:club_id)
-    # @memberships = Membership.where(club_id: @admin_clubs)
 
     search_query = params[:search]
     @clubs= Club.where("name ILIKE ?", "%#{search_query}%").pluck(:id)

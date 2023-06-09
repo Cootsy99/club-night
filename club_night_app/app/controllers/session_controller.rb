@@ -27,6 +27,7 @@ class SessionController < ApplicationController
       puts " PLAYERRRRRRRR #{player.user.name}"
       player.waiting_to_play = false
       player.court = params[:court]
+      player.club_password = "password"
       player.save
     end
     redirect_to session_show_path(club: params[:club_id])
@@ -37,6 +38,7 @@ class SessionController < ApplicationController
     @random_players.each do |player| 
       player.waiting_to_play = false
       player.court = params[:court]
+      player.club_password = "password"
       player.save
     end
     redirect_to session_show_path(club: params[:club_id])
@@ -47,6 +49,7 @@ class SessionController < ApplicationController
     @players.each do |player|
       player.waiting_to_play = true
       player.court = 0
+      player.club_password = "password"
       player.save
     end
     redirect_to session_show_path(club: params[:club_id])
@@ -56,6 +59,7 @@ class SessionController < ApplicationController
     @membership = Membership.find(params[:membership])
     @membership.resting = true
     @membership.waiting_to_play = false
+    @membership.club_password = "password"
     @membership.save
     redirect_to session_show_path(club: params[:club_id])
   end
@@ -64,6 +68,7 @@ class SessionController < ApplicationController
     @membership = Membership.find(params[:membership])
     @membership.resting = false
     @membership.waiting_to_play = true
+    @membership.club_password = "password"
     @membership.save
     redirect_to session_show_path(club: params[:club_id])
   end
@@ -74,6 +79,7 @@ class SessionController < ApplicationController
     @existing_players.each do |player| 
       player.waiting_to_play = true
       player.court = 0
+      player.club_password = "password"
       player.save
     end
   end
@@ -83,6 +89,7 @@ class SessionController < ApplicationController
   @players_playing.each do |player| 
     player.waiting_to_play = true
     player.court = 0
+    player.club_password = "password"
     player.save
   end
   redirect_to club_path(params[:club_id])
@@ -93,6 +100,7 @@ class SessionController < ApplicationController
     @membership = Membership.find(params[:membership][:id])
     @membership.court = params[:membership][:court]
     @membership.waiting_to_play = false
+    @membership.club_password = "password"
     @membership.save
     # @players_selected = Membership.where(club_id: @membership.club_id, court: params[:membership][:court]).count
     # puts "============++++++++++ #{@players_selected}"

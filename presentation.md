@@ -2,13 +2,23 @@
 
 ## What is the application about?
 
-- Inspired by my experiences at racket sport club nights - Currently experience this at my pickleball club nights and have previously experienced it at squash clubs
-  <br>
-  <br> - The factors: - Limited courts - Different number of players each week - Varying levels of ability - Varying levels of fitness
-  <br>
-  <br> - Leads to: - Stressful evening for the organiser as they have to orchestrate who plays on which court, balancing all the factors above - Players can end up having mis-balanced matches - Often courts are empty while it is decided who plays next eating into valuable playing time
+- Inspired by my experiences at racket sport club nights
+- Currently experience this at my pickleball club nights and have previously experienced it at squash clubs
   <br>
   <br>
+  - The factors:
+    - Limited courts
+    - Different number of players each week
+    - Varying levels of ability
+    - Varying levels of fitness
+      <br>
+      <br>
+  - Leads to:
+    - Stressful evening for the organiser as they have to orchestrate who plays on which court, balancing all the factors above
+    - Players can end up having mis-balanced matches
+    - Often courts are empty while it is decided who plays next eating into valuable playing time
+      <br>
+      <br>
 - 'Club Night' is an app designed to make club nights for sport clubs really simple for organisers and good fun for all club members.
 
 ### How it works:
@@ -65,6 +75,14 @@
 - AAA I want to be able to select how many courts I have available as this will change week to week, club to club
 - AAA I want to be able to set the number of players per court so that I can create club nights for all kinds of sports (eg squash = 2. 5-a-side = 5)
 
+## Wireframes
+
+These wireframes are high level and indicative of the general user journey. The final design will likely be slightly different.
+
+<image src="Pictures/Wireframes1.png" alt="Wireframes Picture 1"></image>
+
+<image src="Pictures/Wireframes2.png" alt="Wireframes Picture 2"></image>
+
 # Walk through a piece of code
 
 - Going to show how the 'fixed ability' game is generated
@@ -99,8 +117,7 @@ def fixed_ability
 # Biggest Challenges
 
 1. Trying to follow the MVC design pattern
-   - Sometimes did well
-   - Sometimes didn't do so well (see above)
+   - Knowing where to put the different bits of code
 2. Page refreshes, not having a react state, using javascript.
    - Definitely possible to fix (I think using javascript, using event listeners etc.)
    - Shied away from it because I managed to get through with just updating the backed every time - which is definitely far from ideal both from a cost perspective and a UX perspective
@@ -112,7 +129,7 @@ def fixed_ability
   - Didn't feel so binary (backend + frontend), it felt more integrated
     <br>
     <br>
-- Very much liked how easy it was to get data 'through' other tables
+- Very much liked how easy it was to get data 'through' other tables with Postgresql vs mongoDB
 
   - Recall issue trying to get user names when all I had was a membership id
     <br>
