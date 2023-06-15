@@ -1,19 +1,33 @@
 # Club Night
 
-## Overview
+## Intro
 
-'Club Night' is an app designed to make club nights for sport clubs really simple for organisers and good fun for all club members.
+This is the output of my 4th project as part of my GA SEI course. This was at the end of my bootcamp after 11 weeks of training.
 
-The idea is that club chairperson will pay a small fee to subscribe to the application and they will create their club and become the default admin. Members
-of the club can then join the site fore free, create an account and then join their sports clubs. In the most basic form of the app, it will only support a pickleball
-club that has 4 courts and plays doubles but the ambition of the application is to increase the flexibility on that.
+## Deployment Link
 
-Club admins will be able to start a session and toggle members as present for a club night and will use the app throughout the session to generate matches. The match generation will
-be simple in the basic form of the app with ambitions to increase the functionality.
+https://damp-island-86611.herokuapp.com/
 
-This idea has been inspired by personal experiences where organising consistently good quality club night matches is challenging.
+You may create an account if you wish. To see all functionality please use the following details to login.
 
-## Requirements
+Email: test@test.com
+Password: password123
+
+## Timeframe
+
+- This was a solo venture
+- I spent 8 working days on this project
+
+## Technologies
+
+- Ruby
+- Rails
+- Postgresql
+- HTML
+- CSS
+- JavaScript
+
+## Brief
 
 - Build a full stack web application. Must be your own work.
 - Select a Project Idea of your own.
@@ -44,9 +58,39 @@ This idea has been inspired by personal experiences where organising consistentl
 - Redux
 - Automated Tests Using Jest / RSpec or MiniTest for Rails
 
-## User Stories
+## What is the application about?
 
-(AAU = As a user. AAA = As an admin. AAPS = As a pro subscriber)
+- Inspired by my experiences at racket sport club nights
+- Currently experience this at my pickleball club nights and have previously experienced it at squash clubs
+  <br>
+  <br>
+  - The factors:
+    - Limited courts
+    - Different number of players each week
+    - Varying levels of ability
+    - Varying levels of fitness
+      <br>
+      <br>
+  - Leads to:
+    - Stressful evening for the organiser as they have to orchestrate who plays on which court, balancing all the factors above
+    - Players can end up having mis-balanced matches
+    - Often courts are empty while it is decided who plays next eating into valuable playing time
+      <br>
+      <br>
+- 'Club Night' is an app designed to make club nights for sport clubs really simple for organisers and good fun for all club members.
+
+### How it works:
+
+- Someone in the club will sign-up to the app and pay a small fee to create the club
+  - The first club member will by default be an <strong>admin</strong> for the club
+- All other members of the club will sign up to the app and join the club for free
+- Club admins will have the ability to <strong>start a session</strong>
+- When a session is started, club members can be toggled as present
+- The app will be used throughout the course of a club night to then generate matches
+
+# User Stories
+
+(AAU = As a user. AAA = As an admin.)
 
 ### MVP
 
@@ -69,10 +113,10 @@ This idea has been inspired by personal experiences where organising consistentl
 
 - AAU I want to be able to request to join my club so that my club admins can add me
 - AAU I want to be able to join multiple sports clubs as I might be part of more than one sports club in reality
-- AAPS I want to be able to create a sports club so that my members can join it
+- AAU I want to be able to create a sports club so that my members can join it
 - AAA for a club, I want to be able to accept/decline join request so that not just anyone can join the club
-- AAPS I want to be the only admin initially when I create a new sports club so that I can control who joins the club
-- AAA I want to be able to make other club members and admins that Amin responsibilities are spread between club members
+- AAU I want to be the only admin initially when I create a new sports club so that I can control who joins the club
+- AAA I want to be able to make other club members admins so that admin responsibilities are spread between club members
 - AAA I want to have more flexibility for generating matches so that the players get more varied matches
   - AAA I want to be able to create a ‘balanced mixed ability’ match where I can select multiple ratings and the teams will still be balanced (eg I have a 2v2 pickleball match and I want to make it a beginners and
     intermediates match then the app would pick 2 pairs of 1 beginner player and 1 intermediate player) so that we can mix the abilities for club night
@@ -80,14 +124,12 @@ This idea has been inspired by personal experiences where organising consistentl
     waiting for a while I can ensure that they are part of the next match generation)
 - AAA I want to be able to create a new club night session so that all match making history is wiped clean so that the match generation is fresh for a new club night
 - AAA I want to be able to prioritise match pairings between people who haven’t played against each other that session so that players don’t get trapped playing with the same pairings all night
-- AAPS I want to be able to incorporate a payment system into the app, both a PAYG and a active membership system so that I can keep track of who has and hasn’t paid
+- AAA I want to be able to incorporate a payment system for my app, both a PAYG and an active membership system so that I can keep track of who has and hasn’t paid
 - AAA I want to be able to see a layout of the course at my club and for players to be populated onto the court that they are meant to be playing on so that it is really easy to see who is playing
   and on which court they’re meant to be playing on
 - AAA I want to be able to toggle a timer on for matches (eg all matches last a max of 10 mins) so that all players come off at the same time and there is a richer pool of players to generate matches from
-
-## ERD
-
-<image src="Pictures/ERD.png" alt="Entity Relationship Diagram"></image>
+- AAA I want to be able to select how many courts I have available as this will change week to week, club to club
+- AAA I want to be able to set the number of players per court so that I can create club nights for all kinds of sports (eg squash = 2. 5-a-side = 5)
 
 ## Wireframes
 
@@ -96,3 +138,85 @@ These wireframes are high level and indicative of the general user journey. The 
 <image src="Pictures/Wireframes1.png" alt="Wireframes Picture 1"></image>
 
 <image src="Pictures/Wireframes2.png" alt="Wireframes Picture 2"></image>
+
+## ERD
+
+<image src="Pictures/ERD.png" alt="Entity Relationship Diagram"></image>
+
+# Walk through a piece of code
+
+- Going to show how the 'fixed ability' game is generated
+- Want to demonstrate how simple the logic is once I set up my model correctly
+
+This is in the view file
+
+```ruby
+<%= form_tag(
+        { controller: "session", action: "fixed_ability", club_id: params[:club_id], court: params[:court], level: "Beginner" },
+         method: :post) do %>
+        <%= submit_tag "Beginner (#{Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true, level: "Beginner").count} available)", class: "btn btn-primary" %>
+      <% end %>
+```
+
+This is in the 'Session' Controller
+
+```ruby
+def fixed_ability
+    @random_players = Membership.where(waiting_to_play: true, club_id: params[:club_id], present: true, level: params[:level]).order(Arel.sql('RANDOM()')).limit(4)
+    @random_players.each do |player|
+      player.waiting_to_play = false
+      player.court = params[:court]
+      player.save
+    end
+    redirect_to session_show_path(club: params[:club_id])
+  end
+```
+
+- Have more match generation options I wanted to implement and although it is the most important part of the app it is also relatively straightforward!
+
+# Biggest Challenges
+
+1. Trying to follow the MVC design pattern
+   - Knowing where to put the different bits of code
+2. Page refreshes, not having a react state, using javascript.
+   - Definitely possible to fix (I think using javascript, using event listeners etc.)
+   - Shied away from it because I managed to get through with just updating the backed every time - which is definitely far from ideal both from a cost perspective and a UX perspective
+
+# Favorite Bits
+
+- Deploying to Heroku was the biggest high
+- Enjoyed getting to grips with rails and learning how easy some parts are
+  - Didn't feel so binary (backend + frontend), it felt more integrated
+    <br>
+    <br>
+- Very much liked how easy it was to get data 'through' other tables with Postgresql vs mongoDB
+
+  - Recall issue trying to get user names when all I had was a membership id
+    <br>
+    <br>
+
+- Enjoyed having a bit more time for the project
+  - Gave time to add some cooler features
+  - Didn't feel like such a rush at the beginning to gun for MVP - could add non-MVP bits along the way where it made sense
+
+# Next Features
+
+1.  Want to turn my attention to the versatility feature in particular:
+
+    ```
+     AAA I want to be able to set the number of players per court so that I can create club nights for all kinds of sports (eg squash = 2. 5-a-side = 5)
+    ```
+
+- Given the apps intentions I think this would hugely increase the target audience. At the moment it's bespoke to a club with 4 courts with 4 players on each which is very limiting.
+
+2. Second focus would be to increase the sophistication of the match generation
+
+```md
+- AAA I want to be able to create a ‘balanced mixed ability’ match where I can select multiple ratings and the teams will still be balanced
+
+(eg I have a 2v2 pickleball match and I want to make it a beginners and intermediates match then the app would pick 2 pairs of 1 beginner player and 1 intermediate player)
+
+so that we can mix the abilities for club night
+
+- AAA I want to be able to select some players and generate the rest so that if I know I want one player to play I can ensure they get the next match without having to generate all the players (eg if 1 player has been waiting for a while I can ensure that they are part of the next match generation)
+```
