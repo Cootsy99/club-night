@@ -10,7 +10,7 @@ https://damp-island-86611.herokuapp.com/
 
 You may create an account if you wish. To see all functionality please use the following details to login.
 
-Email: test@test.com
+Email: test@test.com <br>
 Password: password123
 
 ## Timeframe
@@ -140,6 +140,8 @@ These wireframes are high level and indicative of the general user journey. The 
 <image src="Pictures/Wireframes2.png" alt="Wireframes Picture 2"></image>
 
 ## ERD
+
+This was the original ERD. The Memberships table ended up having several additional columns in order to persist some data required for app functionality in the backend.
 
 <image src="Pictures/ERD.png" alt="Entity Relationship Diagram"></image>
 
